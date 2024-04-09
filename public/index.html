@@ -10,94 +10,65 @@
     <link rel="stylesheet" href="style.css" />
     <title>FreshPicks</title>
   </head>
-  <body>
+  <body> 
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          
+          <form method="post" class="sign-in-form">
             <h2 class="title">Welcome to FreshPicks</h2>
             <h6 class="sub-title">Shop local, eat fresh with our farmer market app</h6><br>
 
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" id="email_for_login" name="email"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" id="password_for_login" name="password"/>
             </div>
             <div class="input-field">
                 <i class="fas fa-users"></i>
-                <select name="role" id="role">
+                <select name="role" id="role_for_login">
                     <option value="" disabled selected>Select Role</option>
                     <option value="farmer">Farmer</option>
                     <option value="customer">Customer</option>
                 </select>
             </div>
-            <input type="submit" value="Login" class="btn solid" />
-            <!-- <p class="social-text">Or Sign in with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div> -->
+            <input type="submit" value="Login" id="login"class="btn solid" />
+            
           </form>
-          <form action="#" class="sign-up-form">
+          <form action="/api" method="post" class="sign-up-form">
             <h2 class="title">Sign-up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" id="username_for_signup" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" id="email_for_signup" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-home"></i>
-              <input type="text" placeholder="Address" />
+              <input type="text" id="address_for_signup" placeholder="Address" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" id="password_for_signup" placeholder="Password" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder=" Confirm Password" />
+              <input type="password" id="confirm_password_for_signup" placeholder=" Confirm Password" />
             </div>
             <div class="input-field">
                 <i class="fas fa-users"></i>
-                <select name="role" id="role">
+                <select name="role" id="role_for_signUp">
                     <option value="" disabled selected>Select Role</option>
                     <option value="farmer">Farmer</option>
                     <option value="customer">Customer</option>
                 </select>
             </div>
             <input type="submit" value="Signup" class="btn solid" />
-            <!-- <input type="submit" class="btn" value="Sign up" />
-            <p class="social-text">Or Sign up with google</p>
-            <div class="social-media">
-               <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a> -->
-              <!-- <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a> -->
-              <!-- <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a> -->
-            <!-- </div> --> 
           </form>
         </div>
       </div>
@@ -126,6 +97,51 @@
       </div>
     </div>
 
+    <script >
+    
+  document.addEventListener('DOMContentLoaded', async () => {
+  const signupForm = document.querySelector('.sign-up-form'); // Select the signup form
+
+  signupForm.addEventListener('submit', async (event) => { // Add event listener to the signup form submission
+    event.preventDefault();
+
+    // Retrieve form data
+    const username = document.getElementById('username_for_signup').value;
+    const email = document.getElementById('email_for_signup').value;
+    const password = document.getElementById('password_for_signup').value;
+    const confirm_password = document.getElementById('confirm_password_for_signup').value;
+    const address = document.getElementById('address_for_signup').value;
+    const role = document.getElementById('role_for_signUp').value;
+
+    // Make fetch request to signup endpoint
+    try {
+      const response = await fetch('/api/farmer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, email, password, confirm_password, address, role }) // Attach form data to the request body
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to login user');
+      }
+
+      const userData = await response.json();
+      console.log('User created successfully:', userData);
+
+      // Proceed with further actions if needed, such as redirecting to another page
+      window.location.href = "farmer.html"; // Change "home.html" to the actual URL you want to redirect to
+    } catch (error) {
+      console.error('Error creating user:', error.message);
+      // Handle any errors that occur during signup process
+    }
+  });
+});
+
+
+
+  </script>
     <script src="style.js"></script>
   </body>
 </html>

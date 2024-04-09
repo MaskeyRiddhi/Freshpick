@@ -3,22 +3,30 @@ const mongoose = require('mongoose');
 const farmerSchema  = new mongoose.Schema({
     username:{
         type: String,
-        requrired:true,
+        required:true,
         unique: true
     } ,
     email:{
-        type:String,
-        require: true,
+        type: String,
+        required: true,
         unique: true
     },
     password:{
-        type:String, 
-        required:true},
-
-    phone_number:{
-        type:Number, 
-        required: true, 
-        unique: true}
+        type: String, 
+        required: true
+    },
+    confirm_password: {
+        type: String,
+        required: true
+    },
+    address:{
+        type: String, 
+        required: true
+    },
+    role: {
+        type: String,
+        required: true
+    }
 });
 
-module.exports = mongoose.model('Farmer',farmerSchema,"Farmer");
+module.exports = mongoose.model('Farmer',farmerSchema);
