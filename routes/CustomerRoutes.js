@@ -6,3 +6,4 @@ const createCustomer = require('../controllers/CustomerSignup.js');
 
 router.post('/customer', createCustomer);
 module.exports = router;
+

@@ -75,31 +75,58 @@ exports.login = async (req, res) => {
 };
 
 
+
 exports.adminlogin = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Check if email and password are provided
         if (!email || !password) {
             return res.status(400).json({ message: 'Email and password are required' });
         }
 
-        // Find admin by email
         const admin = await Admin.findOne({ email });
-
-        // Check if admin exists
         if (!admin) {
-            return res.status(404).json({ message: 'Admin not found' });
+            return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        // Compare passwords (Note: This is not recommended for production use)
-        if (admin.password !== password) {
-            return res.status(401).json({ message: 'Invalid password' });
+        const passwordMatch = await bcrypt.compare(password, admin.password);
+        if (!passwordMatch) {
+            return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        // Return successful login response
         res.status(200).json({ message: 'Login successful', admin });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
+
+
+// exports.adminlogin = async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+
+//         // Check if email and password are provided
+//         if (!email || !password) {
+//             return res.status(400).json({ message: 'Email and password are required' });
+//         }
+
+//         // Find admin by email
+//         const admin = await Admin.findOne({ email });
+
+//         // Check if admin exists
+//         if (!admin) {
+//             return res.status(404).json({ message: 'Admin not found' });
+//         }
+
+//         // Compare passwords (Note: This is not recommended for production use)
+//         if (admin.password !== password) {
+//             return res.status(401).json({ message: 'Invalid password' });
+//         }
+
+//         // Return successful login response
+//         res.status(200).json({ message: 'Login successful', admin });
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// };

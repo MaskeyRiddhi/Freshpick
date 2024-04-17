@@ -70,6 +70,7 @@ form.sign-in-form {
   color: #e56123;
 }
 
+
 .input-field {
   max-width: 380px;
   width: 100%;
@@ -410,7 +411,18 @@ form.sign-in-form {
   .image{
     display: none;
   }
+.container.sign-up-mode form.sign-up-form .input-field {
+  height: 40px; 
 }
+
+.container.sign-up-mode form.sign-up-form .input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+  line-height: 40px; 
+}
+
+}
+
 @media (max-width: 570px) {
   form {
     padding: 0 1.5rem;
@@ -435,4 +447,23 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+}
+#cross-icon-container {
+  position: absolute;
+  top: -150px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+  background-color: #e56123; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid transparent; 
+}
+
+#cross-icon {
+  color: white; /* Set the color of the icon */
+  font-size: 1.5rem; /* Increase the icon size */
 }

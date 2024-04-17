@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,11 +15,10 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          
-          <form method="post" class="sign-in-form">
+          <form method="post" action="/api/customer/login" class="sign-in-form">
             <h2 class="title">Welcome to FreshPicks</h2>
             <h6 class="sub-title">Shop local, eat fresh with our farmer market app</h6><br>
-
+          
             <div class="input-field">
               <i class="fas fa-envelope"></i>
               <input type="email" placeholder="Email" id="email_for_login" name="email"/>
@@ -28,26 +28,38 @@
               <input type="password" placeholder="Password" id="password_for_login" name="password"/>
             </div>
             <div class="input-field">
-                <i class="fas fa-users"></i>
-                <select name="role" id="role_for_login">
-                    <option value="" disabled selected>Select Role</option>
-                    <option value="farmer">Farmer</option>
-                    <option value="customer">Customer</option>
-                </select>
+              <i class="fas fa-users"></i>
+              <select name="role" id="role_for_login">
+                <option value="" disabled selected>Select Role</option>
+                <option value="farmer">Farmer</option>
+                <option value="customer">Customer</option>
+              </select>
             </div>
-            <input type="submit" value="Login" id="login"class="btn solid" />
+            <input type="submit" value="Login" id="login" class="btn solid" />
+            <div class="click">
+              <a href="adminlogin.html">Click here to login as Admin</a>
+            </div>
+            <div id="admin-login-error"></div>
+
             
+            <!-- Error message element -->
+            <div id="email-error" class="error-message"></div>
           </form>
-          <form action="/api" method="post" class="sign-up-form">
+          
+          <form action="/api/farmer" method="post" class="sign-up-form">
             <h2 class="title">Sign-up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" id="username_for_signup" placeholder="Username" />
             </div>
+
             <div class="input-field">
               <i class="fas fa-envelope"></i>
               <input type="email" id="email_for_signup" placeholder="Email" />
+              <div id ="errormsg_for_email" class="errormsg_for_email"></div>
+
             </div>
+            
             <div class="input-field">
               <i class="fas fa-home"></i>
               <input type="text" id="address_for_signup" placeholder="Address" />
@@ -59,6 +71,7 @@
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" id="confirm_password_for_signup" placeholder=" Confirm Password" />
+              <div id ="signuppassword-error" class="signuppassword-error"></div>
             </div>
             <div class="input-field">
                 <i class="fas fa-users"></i>
@@ -69,16 +82,20 @@
                 </select>
             </div>
             <input type="submit" value="Signup" class="btn solid" />
+            <!-- this shows error message -->
+            <div id="signup-error" class="error-message"></div>
+
           </form>
         </div>
       </div>
-
+      
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
             <h3>Don't have an account?</h3>
 
             <button class="btn transparent" id="sign-up-btn">
+
               Sign up
             </button>
           </div>
@@ -96,52 +113,17 @@
         </div>
       </div>
     </div>
-
-    <script >
     
-  document.addEventListener('DOMContentLoaded', async () => {
-  const signupForm = document.querySelector('.sign-up-form'); // Select the signup form
+  <script src="connection/signup.js"></script>
 
-  signupForm.addEventListener('submit', async (event) => { // Add event listener to the signup form submission
-    event.preventDefault();
+  <script src="connection/login.js"></script>
 
-    // Retrieve form data
-    const username = document.getElementById('username_for_signup').value;
-    const email = document.getElementById('email_for_signup').value;
-    const password = document.getElementById('password_for_signup').value;
-    const confirm_password = document.getElementById('confirm_password_for_signup').value;
-    const address = document.getElementById('address_for_signup').value;
-    const role = document.getElementById('role_for_signUp').value;
+  <script src="connection/adminlogin.js"></script>
 
-    // Make fetch request to signup endpoint
-    try {
-      const response = await fetch('/api/farmer', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, email, password, confirm_password, address, role }) // Attach form data to the request body
-      });
+  <script src="verification/email.js"></script>
+  <script src="verification/password.js"></script>
 
-      if (!response.ok) {
-        throw new Error('Failed to login user');
-      }
+  <script src="style.js"></script>
 
-      const userData = await response.json();
-      console.log('User created successfully:', userData);
-
-      // Proceed with further actions if needed, such as redirecting to another page
-      window.location.href = "farmer.html"; // Change "home.html" to the actual URL you want to redirect to
-    } catch (error) {
-      console.error('Error creating user:', error.message);
-      // Handle any errors that occur during signup process
-    }
-  });
-});
-
-
-
-  </script>
-    <script src="style.js"></script>
   </body>
 </html>

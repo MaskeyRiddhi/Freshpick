@@ -6,14 +6,14 @@ const adminSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true
     },
-    password:{
+    password: {
         type: String,
-        required: true,
+        required: true
     },
     role: {
         type: String,
@@ -21,4 +21,4 @@ const adminSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Admin',adminSchema);
+module.exports = mongoose.model('Admin', adminSchema);

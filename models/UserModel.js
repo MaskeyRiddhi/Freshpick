@@ -16,16 +16,16 @@ const customerSchema = new mongoose.Schema({
         required: true
     },
     confirm_password:{
-        type: String, 
-        required: true
-    },
-    address: {
         type: String,
         required: true
     },
-    role:{
+    address:{
         type: String,
-        requires: true
+        required: true
+    },
+    role: {
+        type: String,
+        required: true
     }
 });
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>Local Farmer Market App</title>
+</head>
+<body>
+    <div class="container">
+        <div class="signin-signup">
+            <!-- LOGIN FORM -->
+            <form action="" class="sign-in-form">
+                <h1 class="title">Welcome to FreshPicks</h1>
+                <h2 class="title">Shop local, eat fresh with our farmer market app</h2><br>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-users"></i>
+                    <select name="role" id="role">
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="customer">Customer</option>
+                    </select>
+                </div>
+                <input type="submit" value="Forgot Password" class="btn_pw">
+                <input type="submit" value="Log in" class="btn">
+                <!-- <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn">Sign up</a>
+                </p> -->
+            </form>
+            
+            <!--Sign up form-->
+            <form action="" class="sign-Un-form">
+                <h3 class="title">Sign up to FreshPicks</h3>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-home"></i>
+                    <input type="text" placeholder="Address">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-phone"></i>
+                    <input type="text" placeholder="Phone number">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Confirm Password">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-users"></i>
+                    <select name="role" id="role">
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="customer">Customer</option>
+                    </select>
+                </div>
+                
+                <input type="submit" value="Sign up" class="btn">
+                <p class="gmail">Or sign up with google</p>
+                <div class="mail">
+                    <a href="#" class="gmail_icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                </div>
+                <!-- <p class="account-text">Already have an account? <a href="#" id="sign-in-btn">Sign up</a> -->
+                <!-- </p> -->
+            </form>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Already have an account?</h3>
+                    <button class="btn" id="sign-in-btn">Sign in</button>
+                </div>
+                <img src="c.jpg" alt="" class="image">
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Don't have an account?</h3>
+                    <button class="btn" id="sign-up-btn">Sign up</button>
+                </div>
+                <img src="d.jpg" alt="" class="image">
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

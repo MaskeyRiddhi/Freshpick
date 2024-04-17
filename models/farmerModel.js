@@ -1,26 +1,26 @@
 const mongoose = require('mongoose');
 
-const farmerSchema  = new mongoose.Schema({
-    username:{
-        type: String,
-        required:true,
-        unique: true
-    } ,
-    email:{
+const farmerSchema = new mongoose.Schema({
+    username: {
         type: String,
         required: true,
         unique: true
     },
-    password:{
-        type: String, 
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
         required: true
     },
-    confirm_password: {
+    confirm_password:{
         type: String,
         required: true
     },
     address:{
-        type: String, 
+        type: String,
         required: true
     },
     role: {
@@ -29,4 +29,4 @@ const farmerSchema  = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Farmer',farmerSchema);
+module.exports = mongoose.model('Farmer', farmerSchema);

@@ -11,3 +11,4 @@ const createFarmer = require('../controllers/FarmerSignup.js');
 // router.get('/login', authController.login);
 router.post('/farmer', createFarmer);
 module.exports = router;
+
