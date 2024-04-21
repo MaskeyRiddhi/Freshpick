@@ -28,12 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (passwordErrorElement.textContent !== '') {
           throw new Error('Password format error'); // Throw error and prevent signup
       }
-
-        // Show error message if passwords do not match and confirm password is not empty
-    if (password !== confirmPassword && confirmPassword !== '') {
-        const signupError = document.getElementById('signup-errors');
-        return; // Prevent signup if passwords don't match
-    }
   
       // Validate email format
       if (!validateEmail(email)) {

@@ -467,3 +467,42 @@ form.sign-in-form {
   color: white; /* Set the color of the icon */
   font-size: 1.5rem; /* Increase the icon size */
 }
+
+#errormsg_for_email {
+  z-index: 9999; /* Ensure it has a high z-index to appear in front */
+  color: red;
+  font-size: 12px;
+  margin-top: -1px; /* Adjust this value as needed to position it above the input field */
+  grid-column: 1 / -1; /* Span across all columns */
+}
+
+a {
+  text-decoration: none; /* Remove underline */
+  color: #e56123; /* Set text color */
+
+}
+
+#signuppassword-error{
+  display: inline; 
+  margin-left: 10px; 
+  z-index: 9999; /* Ensure it has a high z-index to appear in front */
+  color: red;
+  font-size: 9px;
+  margin-top: -1px; /* Adjust this value as needed to position it above the input field */
+  grid-column: 1 / -1; /* Span across all columns */
+ }
+
+ #error-message, #password-error {
+  display: inline; 
+  margin-left: 10px; 
+  z-index: 9999; /* Ensure it has a high z-index to appear in front */
+  color: red;
+  font-size: 9px;
+  margin-top: -1px; /* Adjust this value as needed to position it above the input field */
+  grid-column: 1 / -1; /* Span across all columns */
+}
+
+#signup-errors{
+  color: red;
+  font-weight: 500;
+}

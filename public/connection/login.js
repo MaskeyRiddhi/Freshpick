@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const password = document.getElementById('password_for_login').value;
     const role = roleSelect.value; // Get the selected role from the dropdown
 
+    if (!validateEmail(email)) {
+      const emailerror = document.getElementById("email-error");
+      emailerror.innerText = "Please enter a valid email address";
+      return; // Prevent form submission if email format is incorrect
+    } else {
+      const emailerror = document.getElementById("email-error");
+      emailerror.innerText = ""; // Clear the error message if email format is correct
+    }
+
     try {
       // Fetch request for login based on role
       const loginResponse = await fetch(`/api/${role}/login`, { // Dynamically set endpoint based on role
@@ -33,6 +42,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else if (role === 'customer') {
         window.location.href = "user.html";
       }
+
+      // Pop-up message after successful login and redirection
+      window.onload = function() {
+        alert('Logged in successfully');
+      };
     } catch (loginError) {
       console.error('Error logging in user:', loginError.message);
       // Handle login error

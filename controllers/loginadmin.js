@@ -6,13 +6,9 @@ const loginAdmin = async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
 
-        if (!user) {
-            return res.status(401).json({ message: 'Invalid email.' });
-        }
-
-        // Directly compare the provided password with the one stored in the database
-        if (user.password !== password) {
-            return res.status(401).json({ message: 'Invalid password' });
+        // Check if the user exists and the password is correct (direct comparison for simplicity here, bcrypt should be used in production)
+        if (!user || user.password !== password) {
+            return res.status(401).json({ message: 'Invalid email or password' }); // Generic message for both errors
         }
 
         // Passwords match, user is authenticated

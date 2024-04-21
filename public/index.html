@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +14,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
+
           <form method="post" action="/api/customer/login" class="sign-in-form">
             <h2 class="title">Welcome to FreshPicks</h2>
             <h6 class="sub-title">Shop local, eat fresh with our farmer market app</h6><br>
@@ -36,15 +36,16 @@
               </select>
             </div>
             <input type="submit" value="Login" id="login" class="btn solid" />
+            <div id="email-errorr"></div>
             <div class="click">
               <a href="adminlogin.html">Click here to login as Admin</a>
             </div>
-            <div id="admin-login-error"></div>
-
             
             <!-- Error message element -->
             <div id="email-error" class="error-message"></div>
           </form>
+
+
           
           <form action="/api/farmer" method="post" class="sign-up-form">
             <h2 class="title">Sign-up</h2>
@@ -67,6 +68,7 @@
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" id="password_for_signup" placeholder="Password" />
+              <div id="password-error" class="error-message"></div>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
@@ -83,9 +85,11 @@
             </div>
             <input type="submit" value="Signup" class="btn solid" />
             <!-- this shows error message -->
-            <div id="signup-error" class="error-message"></div>
+            <div id="signup-errors" class="error-message"></div>
 
           </form>
+
+
         </div>
       </div>
       

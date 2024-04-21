@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const authRoutes = require('./routes/AuthRoutes');
 const path = require('path'); // Add this line to import the path module
 const farmerRoutes = require('./routes/farmerRoutes.js')
 const CustomerRoutes = require('./routes/CustomerRoutes.js')
@@ -28,8 +27,6 @@ app.use(express.static('public'))
 
 
 
-// Routes for authentication
-app.use('/api/auth', authRoutes);
 app.use('/api', farmerRoutes);
 app.use('/api', CustomerRoutes);
 app.use('/api', F_login_routes);
