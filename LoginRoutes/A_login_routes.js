@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const LoginFarmer = require('../controllers/loginfarmer.js');
+const LoginAdmin = require('../LoginControllers/loginadmin.js');
     
      
-router.post('/farmer/login', LoginFarmer);
+router.post('/admin/login', LoginAdmin);
 module.exports = router;
 

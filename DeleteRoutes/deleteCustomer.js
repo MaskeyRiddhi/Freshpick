@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 // const authController = require('../controllers/authController');
-const createCustomer = require('../controllers/CustomerSignup.js');
+const DeleteCustomer = require('../deleteControllers/deleteCustomer.js');
 
+router.delete('/deletecustomer/:id', DeleteCustomer);
 
-router.post('/customer', createCustomer);
 module.exports = router;
 

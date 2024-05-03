@@ -291,13 +291,14 @@ body {
   font-weight: 600;
   color: var(--blue);
 }
-.cardHeader .btn {
+.cardHeader .cardName {
   position: relative;
-  padding: 5px 10px;
+  padding: 10px 15px;
   background: var(--blue);
   text-decoration: none;
   color: var(--white);
   border-radius: 6px;
+  font-size: 20px;
 }
 
 .details table {
@@ -388,6 +389,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
 .recentCustomers table tr td {
   padding: 12px 10px;
 }
