@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Style the form */
+        form {
+            position: absolute;
+            /* Position the form */
+            top: 50%;
+            /* Align the top of the form to the vertical center */
+            left: 50%;
+            /* Align the left side of the form to the horizontal center */
+            transform: translate(-50%, -50%);
+            /* Move the form back by half of its own width and height */
+            width: 65%;
+            /* Set the width of the form */
+            border: 2px solid #ccc;
+            /* Add a border */
+            padding: 20px;
+            /* Add padding */
+            border-radius: 10px;
+            /* Add border radius for rounded corners */
+            background-color: #f9f9f9;
+            /* Set background color */
+        }
+
+        /* Style the table */
+        table {
+            width: 100%;
+            /* Set the width of the table */
+            border-collapse: collapse;
+            /* Collapse table borders */
+        }
+
+        /* Style table headings */
+        thead tr {
+            text-align: center;
+            /* Center align headings */
+            background-color: #ff783a;
+            /* Set background color for headings */
+        }
+
+        thead td {
+            padding: 10px;
+            /* Add padding to table headings */
+        }
+
+        /* Style table cells */
+        tbody tr td {
+            text-align: center;
+            /* Center align table cells */
+            padding: 10px;
+            /* Add padding to table cells */
+        }
+
+        /* Style odd rows with a different background color */
+        tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+            /* Set background color for odd rows */
+        }
+
+        /* Style buttons */
+        .actions-btns {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .delete-btn,
+        .update-btn {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .update-btn {
+            background-color: #4caf50;
+        }
+
+        /* Style close button */
+        .close-btn {
+            position: absolute;
+            top: 70px;
+            right: 150px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="prodmngmt.html" class="close-btn">
+        <img src="delete.png" alt="Close" width="50px">
+    </a>
+    <form action="">
+        <table id="categoryTable">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </form>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to handle delete customer
+        const deleteCategory = async (categoryId) => {
+            try {
+                const confirmed = confirm('Are you sure you want to delete this user?');
+                if (!confirmed) {
+                    return; // User cancelled, do nothing
+                }
+
+                const response = await fetch(`/api/deletecategory/${categoryId}`, {
+                    method: 'DELETE',
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error deleting customer');
+                }
+                location.reload(); // Reload the page after successful deletion
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        // Redirect to update.html when the "Update" button is clicked
+        const redirectToUpdatePage = (categoryId, name) => {
+            window.location.href =
+                `upcat.html?id=${categoryId}&name=${encodeURIComponent(name)}`;
+        };
+
+
+        // Fetch customer data
+        fetch('/api/getcategory')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Populate the customer table
+                data.forEach(category => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+        <td>${category._id}</td>
+        <td>${category.name}</td>
+        <td>
+            <button class="delete-btn" data-id="${category._id}">Delete</button>
+            <button class="update-btn" data-id="${category._id}" data-name="${category.name}" >Update</button>
+        </td>
+    `;
+                    document.querySelector('#categoryTable tbody').appendChild(row);
+                });
+
+                // Add event listeners to delete buttons
+                const deleteButtons = document.querySelectorAll('.delete-btn');
+                deleteButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const categoryId = button.getAttribute('data-id');
+                        deleteCategory(categoryId);
+                    });
+                });
+
+                // Add event listener to update buttons
+                const updateButtons = document.querySelectorAll('.update-btn');
+                updateButtons.forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        event.preventDefault(); // Prevent default button behavior
+                        const categoryId = button.getAttribute('data-id');
+                        const name = button.getAttribute('data-name');
+                        redirectToUpdatePage(categoryId, name);
+                    });
+                });
+
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    });
+
+</script>
+</html>

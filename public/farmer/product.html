@@ -16,8 +16,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
-
-  <style>
+  
+  <style>z
     .button-container {
       display: flex;
       justify-content: flex-end;
@@ -54,7 +54,7 @@
               <a href="./about.html" class="navbar-link">About</a>
             </li>
             <li>
-              <a href="./products.html" class="navbar-link">Products</a>
+              <a href="./product.html" class="navbar-link">Products</a>
             </li>
             <li>
               <a href="./contact.html" class="navbar-link">Contact</a>
@@ -87,12 +87,6 @@
     </div>
   </header>
 
-  <!-- Buttons for Add, Edit, and Delete -->
-  <div class="button-container">
-    <button class="add-button" onclick="loadAddProductForm()">Add Product</button>
-    <button class="edit-button">Edit</button>
-    <button class="delete-button">Delete</button>
-  </div>
 
   <main>
     <article>
@@ -119,18 +113,8 @@
   <!-- ionicon link -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-  <script>
-    function loadAddProductForm() {
-      // Load the addproduct.html file into the current page
-      fetch('addproduct.html')
-        .then(response => response.text())
-        .then(data => {
-          document.body.innerHTML += data; // Append the form HTML to the body
-        })
-        .catch(error => console.error('Error loading addproduct.html:', error));
-    }
-  </script>
 </body>
 
-</html>
+</html> 
+
+

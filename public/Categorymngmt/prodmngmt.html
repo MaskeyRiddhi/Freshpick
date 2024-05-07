@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer</title>
   <!-- ======= Styles ====== -->
-  <link rel="stylesheet" href="farmermngmt.css" />
+  <link rel="stylesheet" href="prodmngmt.css" />
   <!-- <link
       rel="shortcut icon"
       type="image/png"
@@ -50,7 +49,7 @@
 
 
         <li>
-          <a href="farmermngmt.html">
+          <a href="../farmerMngmt/farmermngmt.html">
             <span class="icon">
               <ion-icon name="man-outline"></ion-icon>
             </span>
@@ -105,7 +104,7 @@
         <div class="card">
           <div>
             <div class="numbers">100</div>
-            <div class="cardName">Total Farmers</div>
+            <div class="cardName">Total Products</div>
 
           </div>
           <!-- 
@@ -118,8 +117,8 @@
 
         <div class="card">
           <div>
-            <div class="numbers">4 Farmer deleted</div>
-            <div class="cardName">Delete Farmer</div>
+            <div class="numbers">4 Product deleted</div>
+            <div class="cardName">Deleted Product</div>
           </div>
 
           <div class="iconBx">
@@ -130,80 +129,56 @@
 
       </div>
 
-      <!-- ================ Order Details List ================= -->
-      <div class="details">
-        <div class="recentOrders">
-          <div class="cardHeader">
-            <h2>Farmer Details</h2>
-            <a href="delfarmer.html" class="btn">
-                <div class="cardName">Action</div>
-            </a>         
-        </div>
+   
+  
+      <!-- Best Selling Products card -->
+<div class="details">
+    <div class="cards">
+      <div class="cardHeader">
+        <h2>Best Selling Products</h2>
         
-
-          <table id="customerTable">
-            <thead>
-              <tr>
-                <td>Name</td>
-                <td>Address</td>
-                <td>Email</td>
-              </tr>
-            </thead>
-
-            <tbody>
-              <!-- Customer data will be dynamically added here -->
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Close the tbody tag here -->
-
-        <div class="recentOrders">
-          <div class="cardHeader">
-            <h2>Recent updates</h2>
-           
+        <div class="Manage">
+            <a href="delprods.html" class="btn">Manage Product</a>
           </div>
-
-          <table>
-            <thead>
-              <tr>
-                <td>Name</td>
-                <td>Product</td>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>Apple</td>
-              </tr>
-
-
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>Banana</td>
-              </tr>
-
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>Cheese</td>
-              </tr>
-
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>Chicken</td>
-              </tr>
-
-              <tr>
-                <td>Lorem Ipsum</td>
-                <td>Carrot</td>
-              </tr>
-              <!-- Other recent orders -->
-            </tbody>
-          </table>
-        </div>
       </div>
+      <table id="bestSellingTable">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Price</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lorem Ipsum</td>
+            <td>Apple</td>
+          </tr>
+          <tr>
+            <td>Lorem Ipsum</td>
+            <td>Banana</td>
+          </tr>
+          <tr>
+            <td>Lorem Ipsum</td>
+            <td>Cheese</td>
+          </tr>
+          <tr>
+            <td>Lorem Ipsum</td>
+            <td>Chicken</td>
+          </tr>
+          <tr>
+            <td>Lorem Ipsum</td>
+            <td>Carrot</td>
+          </tr>
+          <!-- Other recent orders -->
+        </tbody>
+      </table>
     </div>
+  </div>
+  
+    <div class="manageCategories">
+        <a href="category.html" class="btn">Manage Product Categories</a>
+      </div>
+</div>
   </div>
 
   <!-- End of footer -->

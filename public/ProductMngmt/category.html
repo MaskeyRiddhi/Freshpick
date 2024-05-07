@@ -94,7 +94,7 @@
         }
 
         /* Style the table body to scroll */
-        #customerTable tbody {
+        #categoryTable tbody {
             height: 300px; /* Set the height of the table body */
             overflow-y: auto; /* Enable vertical scrolling */
         }
@@ -102,11 +102,11 @@
 </head>
 
 <body>
-    <a href="farmermngmt.html" class="close-btn">
+    <a href="prodmngmt.html" class="close-btn">
         <img src="delete.png" alt="Close" width="50px">
     </a>
     <form action="">
-        <table id="customerTable">
+        <table id="categoryTable">
             <thead>
                 <tr>
                     <td>ID</td>
@@ -121,18 +121,18 @@
     </form>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const deleteCustomer = async (customerId) => {
+            const deleteCategory = async (categoryInfo) => {
                 try {
                     const confirmed = confirm('Are you sure you want to delete this user?');
                     if (!confirmed) {
                         return; // User cancelled, do nothing
                     }
-                    const response = await fetch(`/api/deletefarmer/${customerId}`, {
+                    const response = await fetch(`/api/deletecategory/${categoryInfo._id}`, {
                         method: 'DELETE',
                     });
 
                     if (!response.ok) {
-                        throw new Error('Error deleting customer');
+                        throw new Error('Error deleting category');
                     }
                     location.reload(); // Reload the page after successful deletion
                 } catch (error) {
@@ -140,8 +140,8 @@
                 }
             };
 
-            // Fetch customer data
-            fetch('/api/getfarmer')
+            // Fetch category data
+            fetch('/api/getcategory')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -150,28 +150,25 @@
                 })
                 .then(data => {
                     // Populate the customer table
-                    data.forEach(customer => {
+                    data.forEach(categoryInfo => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
-                            <td>${customer._id}</td>
-                            <td>${customer.username}</td>
-                            <td>${customer.address}</td>
-                            <td>${customer.email}</td>
-                            <td>${customer.password}</td>
+                            <td>${categoryInfo._id}</td>
+                            <td>${categoryInfo.name}</td>
                             <td>
-                                <button class="delete-btn" data-id="${customer._id}">Delete</button>
+                                <button class="delete-btn" data-id="${categoryInfo._id}">Delete</button>
                                 <button class="update-btn">Update</button>
                             </td>
                         `;
-                        document.querySelector('#customerTable tbody').appendChild(row);
+                        document.querySelector('#categoryTable tbody').appendChild(row);
                     });
 
                     // Add event listeners to delete buttons
                     const deleteButtons = document.querySelectorAll('.delete-btn');
                     deleteButtons.forEach(button => {
                         button.addEventListener('click', () => {
-                            const customerId = button.getAttribute('data-id');
-                            deleteCustomer(customerId);
+                            const categoryId = button.getAttribute('data-id');
+                            deleteCategory(categoryId);
                         });
                     });
                 })
@@ -181,5 +178,4 @@
         });
     </script>
 </body>
-
 </html>
