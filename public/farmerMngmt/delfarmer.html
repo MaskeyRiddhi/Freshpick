@@ -16,7 +16,7 @@
             /* Align the left side of the form to the horizontal center */
             transform: translate(-50%, -50%);
             /* Move the form back by half of its own width and height */
-            width: 60%;
+            width: 65%;
             /* Set the width of the form */
             border: 2px solid #ccc;
             /* Add a border */
@@ -89,15 +89,41 @@
         .close-btn {
             position: absolute;
             top: 70px;
-            right: 250px;
+            right: 150px;
             cursor: pointer;
         }
 
-        /* Style the table body to scroll */
-        #customerTable tbody {
-            height: 300px; /* Set the height of the table body */
-            overflow-y: auto; /* Enable vertical scrolling */
+        /* Style search input */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
+
+        .search-input {
+            padding: 10px;
+            width: 50%;
+            border-radius: 4px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+        }
+
+        /* Style the "Not found" text */
+        #notFoundText {
+            display: none;
+            text-align: center;
+            font-weight: bold;
+            color: red;
+            margin-top: 10px;
+        }
+        #searchLabel{
+            padding:10px;
+            color: #ff783a;
+            font-size: 20px;
+        }
+
+
     </style>
 </head>
 
@@ -106,6 +132,11 @@
         <img src="delete.png" alt="Close" width="50px">
     </a>
     <form action="">
+        <!-- Search bar -->
+        <div class="search-container">
+            <label for="searchInput" id="searchLabel">Search Name</label>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search for users...">
+        </div>
         <table id="customerTable">
             <thead>
                 <tr>
@@ -114,33 +145,45 @@
                     <td>Address</td>
                     <td>Email</td>
                     <td>Password</td>
-                    <td>Actions</td> <!-- New column for buttons -->
+                    <td>Actions</td>
                 </tr>
             </thead>
             <tbody>
+
             </tbody>
         </table>
+        <!-- Not found text -->
+        <p id="notFoundText">No matching records found.</p>
     </form>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const deleteCustomer = async (customerId) => {
+            // Function to handle delete customer
+            const deletefarmer = async (farmerId) => {
                 try {
                     const confirmed = confirm('Are you sure you want to delete this user?');
                     if (!confirmed) {
                         return; // User cancelled, do nothing
                     }
-                    const response = await fetch(`/api/deletefarmer/${customerId}`, {
+
+                    const response = await fetch(`/api/deletefarmer/${farmerId}`, {
                         method: 'DELETE',
                     });
 
                     if (!response.ok) {
-                        throw new Error('Error deleting customer');
+                        throw new Error('Error deleting Farmer');
                     }
                     location.reload(); // Reload the page after successful deletion
                 } catch (error) {
                     console.error('Error:', error);
                 }
             };
+
+            // Redirect to update.html when the "Update" button is clicked
+            const redirectToUpdatePage = (farmerId, name, address, email, password) => {
+                window.location.href =
+                    `update.html?id=${farmerId}&name=${encodeURIComponent(name)}&address=${encodeURIComponent(address)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+            };
+
 
             // Fetch customer data
             fetch('/api/getfarmer')
@@ -152,17 +195,17 @@
                 })
                 .then(data => {
                     // Populate the customer table
-                    data.forEach(customer => {
+                    data.forEach(farmer => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
-                            <td>${customer._id}</td>
-                            <td>${customer.username}</td>
-                            <td>${customer.address}</td>
-                            <td>${customer.email}</td>
-                            <td>${customer.password}</td>
+                            <td>${farmer._id}</td>
+                            <td>${farmer.username}</td>
+                            <td>${farmer.address}</td>
+                            <td>${farmer.email}</td>
+                            <td>${farmer.password}</td>
                             <td>
-                                <button class="delete-btn" data-id="${customer._id}">Delete</button>
-                                <button class="update-btn">Update</button>
+                                <button class="delete-btn" data-id="${farmer._id}">Delete</button>
+                                <button class="update-btn" data-id="${farmer._id}" data-name="${farmer.username}" data-address="${farmer.address}" data-email="${farmer.email}" data-password="${farmer.password}">Update</button>
                             </td>
                         `;
                         document.querySelector('#customerTable tbody').appendChild(row);
@@ -172,15 +215,54 @@
                     const deleteButtons = document.querySelectorAll('.delete-btn');
                     deleteButtons.forEach(button => {
                         button.addEventListener('click', () => {
-                            const customerId = button.getAttribute('data-id');
-                            deleteCustomer(customerId);
+                            const farmerId = button.getAttribute('data-id');
+                            deleteCustomer(farmerId);
                         });
+                    });
+
+                    // Add event listener to update buttons
+                    const updateButtons = document.querySelectorAll('.update-btn');
+                    updateButtons.forEach(button => {
+                        button.addEventListener('click', (event) => {
+                            event.preventDefault(); // Prevent default button behavior
+                            const farmerId = button.getAttribute('data-id');
+                            const name = button.getAttribute('data-name');
+                            const address = button.getAttribute('data-address');
+                            const email = button.getAttribute('data-email');
+                            const password = button.getAttribute('data-password');
+                            redirectToUpdatePage(farmerId, name, address, email, password);
+                        });
+                    });
+
+                    // Add event listener to search input
+                    const searchInput = document.getElementById('searchInput');
+                    searchInput.addEventListener('input', () => {
+                        const searchText = searchInput.value.toLowerCase();
+                        const rows = document.querySelectorAll('#customerTable tbody tr');
+                        let matchFound = false;
+                        rows.forEach(row => {
+                            const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                            if (name.includes(searchText)) {
+                                row.style.display = 'table-row'; // Show the row
+                                matchFound = true;
+                            } else {
+                                row.style.display = 'none'; // Hide the row
+                            }
+                        });
+                        // Show or hide the "Not found" text based on the search results
+                        const notFoundText = document.getElementById('notFoundText');
+                        if (matchFound) {
+                            notFoundText.style.display = 'none'; // Hide the "Not found" text
+                        } else {
+                            notFoundText.style.display = 'block'; // Show the "Not found" text
+                        }
                     });
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
                 });
         });
+
     </script>
 </body>
 
