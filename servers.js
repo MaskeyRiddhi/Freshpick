@@ -10,11 +10,14 @@ const C_login_routes  = require('./LoginRoutes/C_login_routes.js');
 const A_login_routes = require('./LoginRoutes/A_login_routes.js');
 const productRoutes = require('./PostRoutes/productRoutes.js'); // Import productRoutes
 const categoryRoutes = require('./PostRoutes/categoryRoutes.js'); // Import productRoutes
+// const uploadRouter = require('./routes/upload.routes.js');
 
 //For Get Operartions
 const customer_name = require("./GetRoutes/GetCustomerName.js");
 const Farmer_name = require('./GetRoutes/GetFarmer');
 const categoryInfo = require('./GetRoutes/GetCategory');
+const productController = require('./GetRoutes/GetProduct');
+
 
 
 //For delete operations
@@ -54,24 +57,30 @@ app.use('/api', C_login_routes);
 app.use('/api', A_login_routes);
 app.use('/api', productRoutes);
 app.use('/api', categoryRoutes);
+// app.use('/api', uploadRouter);
 
 
 //For Get Operartions
 app.use('/api',customer_name);
 app.use('/api',Farmer_name);
 app.use('/api',categoryInfo);
+app.use('/api',productController);
 
 
 
 //For Delete Operation
 app.use('/api',detele_customer);
 app.use('/api',detele_farmer);
+app.use('/api', detele_category);
 
 
 //For update Operation
 app.use('/api',UpdateCus);
 app.use('/api',Updatefar);
 app.use('/api',UpdateCat);
+
+
+
 
 
 // Start the server

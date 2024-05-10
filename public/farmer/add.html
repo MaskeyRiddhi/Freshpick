@@ -87,6 +87,7 @@
                         throw new Error('Failed to add product');
                     }
 
+                    window.location.href = './product.html';
                     const product = await response.json();
                     console.log('Product added:', product);
                     // Redirect or show success message here

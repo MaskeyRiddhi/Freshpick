@@ -1,8 +1,8 @@
-const Category = require('../models/categoryModel');
+const model = require('../models/categoryModel');
 
 const deleteCategory = async (req, res) => {
     try {
-        const deletedCategory = await Category.findByIdAndDelete(req.params.id);
+        const deletedCategory = await model.findByIdAndDelete(req.params.id);
         if (!deletedCategory) {
             return res.status(404).json({ message: 'Category not found' });
         }
@@ -10,6 +10,6 @@ const deleteCategory = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-};
+}
 
 module.exports = deleteCategory;
