@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+// const multer = require('multer');
 const dotenv = require('dotenv');
 const path = require('path'); // Add this line to import the path module
 const bodyParser = require('body-parser'); // Import bodyParser for parsing URL-encoded bodies
@@ -10,7 +11,6 @@ const C_login_routes  = require('./LoginRoutes/C_login_routes.js');
 const A_login_routes = require('./LoginRoutes/A_login_routes.js');
 const productRoutes = require('./PostRoutes/productRoutes.js'); // Import productRoutes
 const categoryRoutes = require('./PostRoutes/categoryRoutes.js'); // Import productRoutes
-// const uploadRouter = require('./routes/upload.routes.js');
 
 //For Get Operartions
 const customer_name = require("./GetRoutes/GetCustomerName.js");
@@ -19,17 +19,20 @@ const categoryInfo = require('./GetRoutes/GetCategory');
 const productController = require('./GetRoutes/GetProduct');
 
 
-
 //For delete operations
 const detele_customer = require('./DeleteRoutes/deleteCustomer.js');
 const detele_farmer = require('./DeleteRoutes/deletefarmer.js');
 const detele_category = require('./DeleteRoutes/deleteCategory.js');
+const detele_products = require('./DeleteRoutes/deleteproduct.js');
+
 
 
 //For update operations
 const UpdateCus = require('./UpdateRoutes/UpcCustomer.js')
 const Updatefar = require('./UpdateRoutes/upfarmer.js')
 const UpdateCat = require('./UpdateRoutes/upCategory.js')
+const UpdatePro = require('./UpdateRoutes/upPro.js')
+
 
 
 dotenv.config();
@@ -57,7 +60,6 @@ app.use('/api', C_login_routes);
 app.use('/api', A_login_routes);
 app.use('/api', productRoutes);
 app.use('/api', categoryRoutes);
-// app.use('/api', uploadRouter);
 
 
 //For Get Operartions
@@ -72,14 +74,15 @@ app.use('/api',productController);
 app.use('/api',detele_customer);
 app.use('/api',detele_farmer);
 app.use('/api', detele_category);
+app.use('/api', detele_products);
+
 
 
 //For update Operation
 app.use('/api',UpdateCus);
 app.use('/api',Updatefar);
 app.use('/api',UpdateCat);
-
-
+app.use('/api',UpdatePro);
 
 
 
@@ -88,3 +91,4 @@ const PORT = 47047;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+

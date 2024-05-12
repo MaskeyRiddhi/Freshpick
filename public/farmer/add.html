@@ -26,7 +26,10 @@
             display: block;
             margin-bottom: 5px;
         }
-        input[type="text"], input[type="number"], textarea, select {
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -39,14 +42,18 @@
             background-color: #e56123;
             color: white;
             padding: 10px 20px;
-            border: 2px solid #e56123; /* Border color same as button color */
+            border: 2px solid #e56123;
+            /* Border color same as button color */
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+            transition: background-color 0.3s, border-color 0.3s;
+            /* Smooth transition */
         }
         input[type="submit"]:hover {
-            background-color: #e56123; /* Same color on hover */
-            border-color: white; /* Border color changes on hover */
+            background-color: #e56123;
+            /* Same color on hover */
+            border-color: white;
+            /* Border color changes on hover */
         }
     </style>
 </head>
@@ -60,40 +67,58 @@
             <input type="text" id="productName" name="productName" required>
             <label for="price">Price per Kg (Rs.):</label>
             <input type="number" id="price" name="price" min="0" step="0.01" required>
+                <!-- Category input field to be populated automatically -->
+            <label for="productCategory">Category:</label>
+            <input type="text" id="productCategory" name="productCategory" required disabled>
+            
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea>
-            <label for="image">Image:</label>
+            <label for="image" id="image">Image:</label>
             <input type="file" id="image" name="image" accept="image/*">
             <input type="submit" value="Add Product">
         </form>
     </div>
-
+    <script src="addprod.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        
+        document.addEventListener('DOMContentLoaded', async () => {
             const addProductForm = document.getElementById('addProductForm');
+            
+            // Get the category ID from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryId = urlParams.get('category');
+
+            // Automatically populate the category input field with category ID
+            document.getElementById('productCategory').value = categoryId;
 
             addProductForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
-
-                const formData = new FormData(addProductForm);
-
+                const productName = document.getElementById('productName').value;
+                const price = document.getElementById('price').value;
+                const description = document.getElementById('description').value;
+                // const image = document.getElementById('image').value;
                 try {
-                    const response = await fetch('/api/product', {
+                    const response = await fetch('/api/Products', {
                         method: 'POST',
-                        body: formData
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            productName,
+                            price,
+                            description,
+                            
+                        })
                     });
-
                     if (!response.ok) {
                         throw new Error('Failed to add product');
                     }
-
                     window.location.href = './product.html';
-                    const product = await response.json();
-                    console.log('Product added:', product);
-                    // Redirect or show success message here
+
+                    // Optionally, you can redirect or show a success message here
                 } catch (error) {
                     console.error('Error adding product:', error);
-                    // Show error message to the user
+                    // Optionally, you can show an error message to the user
                 }
             });
         });
