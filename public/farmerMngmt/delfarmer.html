@@ -158,7 +158,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Function to handle delete customer
-            const deletefarmer = async (farmerId) => {
+            const deleteFarmer = async (farmerId) => {
                 try {
                     const confirmed = confirm('Are you sure you want to delete this user?');
                     if (!confirmed) {
@@ -216,7 +216,7 @@
                     deleteButtons.forEach(button => {
                         button.addEventListener('click', () => {
                             const farmerId = button.getAttribute('data-id');
-                            deleteCustomer(farmerId);
+                            deleteFarmer(farmerId);
                         });
                     });
 
@@ -264,6 +264,7 @@
         });
 
     </script>
+
 </body>
 
 </html>

@@ -1,3 +1,9 @@
+// Function to validate email format
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   const loginForm = document.querySelector('.sign-in-form'); // Select the login form
   const roleSelect = document.getElementById('role_for_login'); // Select the role dropdown
@@ -11,11 +17,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const role = roleSelect.value; // Get the selected role from the dropdown
 
     if (!validateEmail(email)) {
-      const emailerror = document.getElementById("email-error");
+      const emailerror = document.getElementById("email-errorr");
       emailerror.innerText = "Please enter a valid email address";
       return; // Prevent form submission if email format is incorrect
     } else {
-      const emailerror = document.getElementById("email-error");
+      const emailerror = document.getElementById("email-errorr");
       emailerror.innerText = ""; // Clear the error message if email format is correct
     }
 

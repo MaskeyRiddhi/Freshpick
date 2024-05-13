@@ -3,6 +3,7 @@ const Product = require('../models/productModel');
 
 const createProduct = async (req, res) => {
     try {
+        console.log('Request Body:', req.body); // Log the request body
         const product = await Product.create(req.body);
         res.status(201).json(product);
     } catch (error) {
@@ -12,4 +13,11 @@ const createProduct = async (req, res) => {
 };
 
 module.exports = createProduct;
+
+
+
+
+
+
+
 

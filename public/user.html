@@ -50,20 +50,25 @@
           <ul class="navbar-list">
 
             <li>
-              <a href="./index.html" class="navbar-link">Home</a>
+              <a href="./user.html" class="navbar-link">Home</a>
             </li>
 
             <li>
-              <a href="./about.html" class="navbar-link">About</a>
+              <a href="#about-us" class="navbar-link">About</a>
             </li>
 
             <li>
-              <a href="./shop.html" class="navbar-link">Products</a>
+              <a href="#organic-products" class="navbar-link">Products</a>
             </li>
 
             <li>
-              <a href="./contact.html" class="navbar-link">Contact</a>
-            </li>
+              <a href="#footers" class="navbar-link" onclick="scrollToSection('footers')">Contact</a>
+          </li>
+          
+          <li>
+            <a href="#" id="signout" class="navbar-link">Signout</a>
+          </li>
+          
 
           </ul>
 
@@ -125,7 +130,7 @@
 
       <ul class="panel-list">
 
-        <li class="panel-item">
+        <!-- <li class="panel-item">
           <a href="./product-details.html" class="panel-card">
 
             <figure class="item-banner">
@@ -141,12 +146,12 @@
 
             <button class="item-close-btn" aria-label="Remove item">
               <ion-icon name="close-outline"></ion-icon>
-            </button>
-
+            </button> -->
+<!-- 
           </a>
-        </li>
+        </li> -->
 
-        <li class="panel-item">
+        <!-- <li class="panel-item">
           <a href="./product-details.html" class="panel-card">
 
             <figure class="item-banner">
@@ -161,15 +166,15 @@
 
             <button class="item-close-btn" aria-label="Remove item">
               <ion-icon name="close-outline"></ion-icon>
-            </button>
+            </button> -->
 
-          </a>
-        </li>
+          <!-- </a>
+        </li> -->
 
         <li class="panel-item">
           <a href="./product-details.html" class="panel-card">
 
-            <figure class="item-banner">
+            <!-- <figure class="item-banner">
               <img src="./user/strawberry.png" width="46" height="46" loading="lazy"
                 alt="Strawberry">
             </figure>
@@ -182,7 +187,7 @@
 
             <button class="item-close-btn" aria-label="Remove item">
               <ion-icon name="close-outline"></ion-icon>
-            </button>
+            </button> -->
 
           </a>
         </li>
@@ -210,7 +215,7 @@
         <li class="panel-item">
           <a href="./product-details.html" class="panel-card">
 
-            <figure class="item-banner">
+            <!-- <figure class="item-banner">
               <img src="./user/orange.png" width="46" height="46" loading="lazy"
                 alt="Orange">
             </figure>
@@ -223,7 +228,7 @@
 
             <button class="item-close-btn" aria-label="Remove item">
               <ion-icon name="close-outline"></ion-icon>
-            </button>
+            </button> -->
 
           </a>
         </li>
@@ -231,7 +236,7 @@
         <li class="panel-item">
           <a href="./product-details.html" class="panel-card">
 
-            <figure class="item-banner">
+            <!-- <figure class="item-banner">
               <img src="./user/strawberry.png" width="46" height="46" loading="lazy" alt="Strawberry">
             </figure>
 
@@ -243,7 +248,7 @@
 
             <button class="item-close-btn" aria-label="Remove item">
               <ion-icon name="close-outline"></ion-icon>
-            </button>
+            </button> -->
 
           </a>
         </li>
@@ -256,15 +261,11 @@
         <data class="subtotal-value" value="215.14">Rs 100</data>
       </div>
 
-      <a href="./cart.html" class="panel-btn">View Cart</a>
+      <a href="./checkout-shopping.html" class="panel-btn">View Cart</a>
 
     </div>
 
   </aside>
-
-
-
-
 
   <main>
     <article>
@@ -288,11 +289,11 @@
                 Local Farmer's Market at Your Fingertips!           
              </p>
 
-            <a href="./shop.html" class="btn btn-primary">
+             <a href="#organic-products" class="btn btn-primary" onclick="scrollToSection('organic-products')">
               <span class="span">Shop Now</span>
-
               <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
-            </a>
+           </a>
+           
 
           </div>
 
@@ -347,11 +348,7 @@
         </div>
       </section>
 
-
-
-
-
-      <!-- 
+<!-- 
         - #OFFERS
       -->
 
@@ -372,7 +369,7 @@
 
                   <h3 class="h3 card-title">Fresh and tasty vegetables.</h3>
 
-                  <div class="btn btn-primary">Shop Now</div>
+                  
                 </div>
 
               </a>
@@ -389,8 +386,7 @@
                 <div class="card-content">
 
                   <h3 class="h3 card-title">Healthy and fresh meat.</h3>
-
-                  <div class="btn btn-primary">Shop Now</div>
+                  
                 </div>
 
               </a>
@@ -405,44 +401,19 @@
 
 
 
+
+
       <!-- 
         - #PRODUCT
       -->
 
-      <section class="section product">
+      <section id="organic-products" class="section product">
         <div class="container">
 
           <p class="section-subtitle"> -- Organic Products --</p>
 
           <h2 class="h2 section-title">All Organic Products</h2>
 
-          <ul class="filter-list">
-
-            <li>
-              <button class="filter-btn active">
-                <p class="filter-text">Fresh Vegetables</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="filter-btn">
-                <p class="filter-text">Fish & Meat</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="filter-btn">
-                <p class="filter-text">Healthy Fruit</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="filter-btn">
-                <p class="filter-text">Dairy Products</p>
-              </button>
-            </li>
-
-          </ul>
 
           <ul class="grid-list">
 
@@ -1193,55 +1164,27 @@
         </div>
       </section>
 
-
-
-
-
-      
-
-
-
-
-      <!-- Pathao      -->
-
-      <section class="section newsletter">
-        <div class="container">
-
-          <div class="newsletter-card">
-
-            <p class="section-subtitle"> -- Subscribe to Pathao --</p>
-
-            <h2 class="h2 section-title">Sign Up To Pathao & Get <span class="span">20% Off.</span></h2>
-
-            <form action="" class="newsletter-form">
-
-              <input type="email" name="email" placeholder="Enter your email" required class="input-email">
-
-              <button type="submit" class="btn btn-primary">
-                <span>Sign Up</span>
-
-                <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
-              </button>
-
-            </form>
-
-          </div>
-
-        </div>
-      </section>
-
     </article>
   </main>
 
 
 
+   <!-- About Us Section -->
+  <section id="about-us" class="section">
+    <div class="about-section">
+      <h2 class="h2 section-title">About Us</h2>
+      <p>Welcome to FreshPicks, your local farmers market connecting you with fresh, locally grown produce and artisanal products.</p>
+      <p>At FreshPicks, we are committed to supporting sustainable agriculture practices and fostering a vibrant local economy. Our mission is to provide a platform for local farmers and artisans to sell their products directly to the community, creating a sustainable and thriving local food system.</p>
+      <p>We believe in promoting healthy eating habits, supporting small-scale farmers and producers, and building connections between producers and consumers.</p>
+    </div>
+  </section>
 
 
   <!-- 
     - #FOOTER
   -->
 
-  <footer class="footer">
+  <footer id="footers" class="footer">
 
     <div class="footer-top">
       <div class="container">
@@ -1284,33 +1227,6 @@
 
         </div>
 
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Company</p>
-          </li>
-
-          <li>
-            <a href="./about.html" class="footer-link">About Us</a>
-          </li>
-
-          <li>
-            <a href="./shop.html" class="footer-link">Shop</a>
-          </li>
-
-          <li>
-            <a href="./blog.html" class="footer-link">Blog</a>
-          </li>
-
-          <li>
-            <a href="./shop.html" class="footer-link">Product</a>
-          </li>
-
-          <li>
-            <a href="./contact.html" class="footer-link">Contact Us</a>
-          </li>
-
-        </ul>
 
         <ul class="footer-list">
 
@@ -1373,8 +1289,6 @@
 
 
 
-
-
   <!-- 
     - #BACK TO TOP
   -->
@@ -1392,12 +1306,27 @@
   -->
   <script src="user.js"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const signoutButton = document.getElementById('signout');
+      signoutButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        const isConfirmed = confirm("Are you sure you want to log out?");
+  
+        if (isConfirmed) {
+          window.location.href = "./index.html";
+        }
+      });
+    });
+  </script>
+
   <!-- 
     - ionicon link
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+  
 </body>
-
 </html>

@@ -91,3 +91,22 @@ for (let i = 0; i < productThumbnails.length; i++) {
 
   });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Get the signout button
+  const signoutButton = document.getElementById('signout');
+
+  // Add click event listener to the signout button
+  signoutButton.addEventListener('click', function(event) {
+    // Prevent the default action of the link
+    event.preventDefault();
+    
+    // Display confirmation dialog
+    const isConfirmed = confirm("Are you sure you want to log out?");
+
+    // If user confirms, redirect to index.html
+    if (isConfirmed) {
+      window.location.href = "./index.html";
+    }
+  });
+});

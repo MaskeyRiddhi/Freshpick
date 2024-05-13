@@ -2,14 +2,6 @@
   #home.css
 \*-----------------------------------*/
 
-/**
- * copyright 2022 codewithsadee
- */
-
-
-
-
-
 /*-----------------------------------*\
   #HERO
 \*-----------------------------------*/
@@ -67,6 +59,7 @@
   background-repeat: no-repeat;
   background-position: left bottom;
   background-blend-mode: soft-light;
+  margin-bottom: 40px;
 }
 
 .service-list {
@@ -490,49 +483,6 @@
 
   
 
-  /**
-   * PARTNER
-   */
-
-  .partner-item { min-width: 33.33%; }
-
-
-
-  /**
-   * NEWSLETTER
-   */
-
-  .newsletter :is(.section-subtitle, .input-email) { font-size: 2rem; }
-
-  .newsletter .section-title { --fs-3: 2.4rem; }
-
-  .newsletter .section-title .span {
-    font-size: inherit;
-    display: inline-block;
-  }
-
-  .newsletter-form { position: relative; }
-
-  .newsletter .input-email {
-    padding: 25px 30px;
-    padding-inline-end: 160px;
-  }
-
-  .newsletter .btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    bottom: 8px;
-    width: auto;
-    --padding: 0 30px;
-  }
-
-}
-
-
-
-
-
 /**
  * responsive for larger than 569px screen
  */
@@ -875,7 +825,6 @@
 
   .partner {
     padding-block: 150px;
-    background-image: url("../images/partner-left-bg.png"), url("../images/partner-right-bg.png");
     background-repeat: no-repeat, no-repeat;
     background-position: bottom left, top right;
   }

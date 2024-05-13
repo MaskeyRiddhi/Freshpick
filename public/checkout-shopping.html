@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkout</title>
+    
+    <link rel="stylesheet" href="checkout.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="checkout.js" charset="utf-8" type="module"></script>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main id="main">
+        <h1>Checkout</h1>
+        <aside class="ware">
+            <div class="w-item">
+                <figure class="item">
+                    <img class="i-img" src="./user/orange.png" alt="Orange">
+                    <figcaption class="i-caption">Orange</figcaption>
+                    <p class="i-price"><span class="price-off">Rs 100</span></p>
+                    <div class="i-btns">
+                        <button class="i-btn minus" type="button"><i class="material-icons">remove</i></button>
+                        <input type="number" name="bb-qty" class="w-input i-input" min="1" value="1">
+                        <button class="i-btn plus" type="button"><i class="material-icons">add</i></button>
+                    </div>
+                </figure>
+            </div>
+            <div class="w-item">
+                <figure class="item">
+                    <img class="i-img" src="./user/melon.png" alt="Watermelon">
+                    <figcaption class="i-caption">Watermelon</figcaption>
+                    <p class="i-price"><span class="price-off">Rs 100</span> </p>
+                    <div class="i-btns">
+                        <button class="i-btn minus" type="button"><i class="material-icons">remove</i></button>
+                        <input type="number" name="s-qty" class="w-input i-input" min="1" value="1">
+                        <button class="i-btn plus" type="button"><i class="material-icons">add</i></button>
+                    </div>
+                </figure>
+            </div>
+            <p class="g-price g-price-shipping"><span>Shipping</span> <span>Rs 20</span></p>
+            <p class="g-price"><span>Total</span> <span class="total">Rs 120</span></p>
+        </aside>
+        <form class="form">
+            <fieldset class="fieldset f-contact">
+                <legend class="legend">Contact Info</legend>
+                <label class="label" for="email">Email</label>
+                <p class="field">
+                    <i class="material-icons icon">email</i>
+                    <input type="email" name="email" class="input" placeholder="Your email..." required>
+                </p>
+                <label class="label" for="phone">Phone</label>
+                <p class="field">
+                    <i class="material-icons icon">phone</i>
+                    <input type="tel" name="phone" class="input" placeholder="Your phone..." maxlength="14" pattern="\(\d{3}\) \d{3}[ -]\d{4}" title="Valid phone format: (123) 456-7890" required>
+                </p>
+            </fieldset>
+            <fieldset class="fieldset">
+                <legend class="legend">Shipping Address</legend>
+                <label class="label" for="name">Full Name</label>
+                <p class="field">
+                    <i class="material-icons icon">account_circle</i>
+                    <input type="text" name="name" class="input" placeholder="Your full name..." required>
+                </p>
+                <label class="label" for="address">Address</label>
+                <p class="field">
+                    <i class="material-icons icon">home</i>
+                    <input type="text" name="address" class="input" placeholder="Your address..." required>
+                </p>
+                <label class="label" for="city">City</label>
+                <p class="field">
+                    <i class="material-icons icon">location_city</i>
+                    <input type="text" name="city" class="input" placeholder="Your city..." required>
+                </p>
+                <div class="container">
+                    <div>
+                        <label class="label" for="country">Country</label>
+                        <div class="content">
+                            <p class="field">
+                                <i class="material-icons icon">public</i>
+                                <select name="country" class="input select">
+                                    <option value="" selected>Your country...</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="US">Nepal</option>
+                                    <option value="JP">India</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </fieldset>
+            <div class="container">
+                <button type="submit" class="btn" onclick="window.location.href = 'final.html';">Place order</button>
+            </div>
+            
+        </form>
+    </main>
+    <footer class="footer">
+        <p>@FreshPicks</p>
+    </footer>
+</body>
+</html>

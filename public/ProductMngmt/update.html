@@ -61,53 +61,48 @@
 
 <body>
     <form id="updateForm">
-        <h1 id="categoryId">Selected User ID: </h1> <!-- New element to display customer ID -->
+        <h1 id="categoryId">Selected User ID: </h1> <br><br><!-- New element to display customer ID -->
         <label for="name">Name</label><br>
-        <input type="text" id="name" name="name"><br>
+        <input type="text" id="name" name="name"><br><br>
 
         <button type="submit">Update</button>
     </form>
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('DOMContentLoaded event fired');
+       document.addEventListener('DOMContentLoaded', function () {
+    // Function to extract query parameters from URL
+    const getQueryParams = () => {
+        const params = {};
+        const queryString = window.location.search.substring(1);
+        const queryParams = queryString.split('&');
+        queryParams.forEach(param => {
+            const pair = param.split('=');
+            params[pair[0]] = decodeURIComponent(pair[1]);
+        });
+        return params;
+    };
 
-            // Function to extract query parameters from URL
-            const getQueryParams = () => {
-                const params = {};
-                const queryString = window.location.search.substring(1);
-                const queryParams = queryString.split('&');
-                queryParams.forEach(param => {
-                    const pair = param.split('=');
-                    params[pair[0]] = decodeURIComponent(pair[1]);
-                });
-                return params;
-            };
+    // Function to fill form fields with category details
+    const fillFormWithCategoryDetails = () => {
+        const queryParams = getQueryParams();
+        const categoryId = queryParams.id || '';
+        document.getElementById('categoryId').innerText = `Selected Category ID: ${categoryId}`;
+    };
 
-            // Function to fill form fields with customer details
-            // Function to fill form fields with customer details
-            // Function to fill form fields with category details
-            const fillFormWithCategoryDetails = () => {
-                const queryParams = getQueryParams();
-                console.log('Query Parameters:', queryParams); // Log query parameters to console
-                const categoryId = queryParams.id || '';
-                console.log('Category ID:', categoryId); // Log category ID to console
-                document.getElementById('name').value = queryParams.name || '';
-                document.getElementById('categoryId').innerText = `Selected Category ID: ${categoryId}`;
-            };
-
-
-
-            // Call the function to fill the form when the page loads
-            fillFormWithCategoryrDetails();
+    // Call the function to fill the form when the page loads
+    fillFormWithCategoryDetails();
 
             // Function to handle form submission
-            const updateCategopry = async (event) => {
+            const updateCategory = async (event) => {
                 event.preventDefault(); // Prevent default form submission
 
                 // Extract customer details from the form
                 const name = document.getElementById('name').value;
+                if(!name){
+                    alert("Name field must not be empty!1");
+                    return;
+                }
 
                 try {
                     // Extract customer ID from the query parameters
@@ -128,7 +123,7 @@
                     }
 
                     alert('Category updated successfully!');
-                    window.location.href = "deletecat.html";
+                    window.location.href = "category.html";
                     // Optionally, redirect to another page or perform any other action after successful update
                 } catch (error) {
                     console.error('Error updating customer:', error);

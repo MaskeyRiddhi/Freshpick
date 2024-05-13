@@ -7,11 +7,40 @@
     <title>Admin Dashboard</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="admin.css" />
-    <!-- <link
-      rel="shortcut icon"
-      type="image/png"
-      href="./assets/imgs/favicon.ico"
-    /> -->
+    <style>
+      .yessnoo{
+        display: flex;
+        justify-content: space-around;
+      }
+      #yess{
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 25px;
+        margin-top:20px;
+        width: 90px;
+      }
+      #Noo{
+        background-color: #ff0000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 25px;
+        margin-top:20px;
+        width: 90px;
+      }
+      #confirm{
+        color:white;
+        font-size: 25px;
+        margin-top: 20px;
+      }
+    </style>
+    
   </head>
 
   <body>
@@ -65,23 +94,27 @@
             </a>
           </li>
 
-          <!-- <li>
-            <a href="#">
-              <span class="icon">
-                <ion-icon name="list-outline"></ion-icon>
-              </span>
-              <span class="title">Categories</span>
-            </a>
-          </li> -->
-
           <li>
-            <a href="./index.html">
+            <a href="javascript:void(0);" onclick="showLogoutForm()">
               <span class="icon">
-                <ion-icon name="log-out-outline"></ion-icon>
+                  <ion-icon name="log-out-outline"></ion-icon>
               </span>
               <span class="title">Sign Out</span>
-            </a>
+          </a>
           </li>
+          
+          <!-- Logout Form -->
+
+          <div id="logoutForm" style="display: none;">
+            <form id="confirmLogoutForm" action="adminlogin.html">
+              <p id="confirm">Are you sure you want to log out?</p>
+              <div class="yessnoo">
+              <button type="submit" id="yess">Yes</button>
+              <button type="button"id="Noo" onclick="hideLogoutForm()">No</button>
+            </div>
+            </form>
+          </div> 
+          
         </ul>
       </div>
 
@@ -90,12 +123,6 @@
         <div class="topbar">
           <div class="toggle">
             <ion-icon name="menu-outline"></ion-icon>
-          </div>
-
-
-
-          <div class="user">
-            <img src="admin.png" alt="" />
           </div>
         </div>
 
@@ -110,42 +137,6 @@
 
             <div class="iconBx">
               <ion-icon name="stats-chart-outline"></ion-icon>
-            </div>
-          </div>
-
-
-          <div class="card">
-            <div>
-              <div class="numbers">100</div>
-              <div class="cardName">Total Products</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="cart-outline"></ion-icon>
-            </div>
-          </div>
-
-          
-
-          <div class="card">
-            <div>
-              <div class="numbers">100</div>
-              <div class="cardName">Comments</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="chatbubbles-outline"></ion-icon>
-            </div>
-          </div>
-
-          <div class="card">
-            <div>
-              <div class="numbers">Rs 100</div>
-              <div class="cardName">Total Earning</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="cash-outline"></ion-icon>
             </div>
           </div>
         </div>
@@ -171,31 +162,31 @@
             <tbody>
               <tr>
                 <td>Lorem Ipsum</td>
-                <td>$100</td>
+                <td>Rs100</td>
                 <td>Delivered</td>
               </tr>
 
               <tr>
                 <td>Lorem Ipsum</td>
-                <td>$100</td>
+                <td>Rs100</td>
                 <td>Pending</td>
               </tr>
 
               <tr>
                 <td>Lorem Ipsum</td>
-                <td>$100</td>
+                <td>Rs100</td>
                 <td>Pending</td>
               </tr>
 
               <tr>
                 <td>Lorem Ipsum</td>
-                <td>$100</td>
+                <td>Rs100</td>
                 <td>Delivered</td>
               </tr>
 
               <tr>
                 <td>Lorem Ipsum</td>
-                <td>$100</td>
+                <td>Rs100</td>
                 <td>Pending</td>
               </tr>
 
@@ -226,27 +217,27 @@
               <tbody>
                 <tr>
                   <td>Lorem Ipsum</td>
-                  <td>$100</td>
+                  <td>Rs100</td>
                 </tr>
 
                 <tr>
                   <td>Lorem Ipsum</td>
-                  <td>$100</td>
+                  <td>Rs100</td>
                   </tr>
 
                   <tr>
                     <td>Lorem Ipsum</td>
-                    <td>$100</td>
+                    <td>Rs100</td>
                     </tr>
 
                     <tr>
                       <td>Lorem Ipsum</td>
-                      <td>$100</td>
+                      <td>Rs100</td>
                       </tr>
 
                       <tr>
                         <td>Lorem Ipsum</td>
-                        <td>$100</td>
+                        <td>Rs100</td>
                         </tr>
 
                 
@@ -271,5 +262,16 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+
+    <script>
+    function showLogoutForm() {
+      document.getElementById("logoutForm").style.display = "block";
+    }
+    
+    function hideLogoutForm() {
+      document.getElementById("logoutForm").style.display = "none";
+    }
+    </script>
+
   </body>
 </html>

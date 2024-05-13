@@ -6,5 +6,6 @@ const categorySchema = new mongoose.Schema({
         required: true
     }
 
-});
+},{ timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
+
 module.exports = mongoose.model('Category', categorySchema);

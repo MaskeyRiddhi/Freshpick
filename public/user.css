@@ -180,7 +180,7 @@
     #REUSED STYLE
   \*-----------------------------------*/
   
-  .container { padding-inline: 15px; }
+
   
   .btn {
     background-color: var(--bg-color, var(--emerald));
@@ -239,6 +239,7 @@
   .has-scrollbar:hover::-webkit-scrollbar-thumb { background-color: var(--black_25); }
   
   .section-subtitle {
+   
     color: var(--emerald);
     font-family: var(--ff-playfair-display);
     font-size: var(--fs-3);
@@ -655,8 +656,23 @@
   
   .panel-btn:is(:hover, :focus) { background-color: var(--green-pigment); }
   
+  .about-section {
+    max-width: 1000px;
+    margin: 0px auto 50px;
+    padding: 20px;
+    background-color: hsl(96, 36%, 95%);
+    border-radius: 10px;
+  }
+
+  .section-title {
+    color:#e56123;
+  }
   
-  
+  .about-section p {
+    margin-top: 20px;
+    line-height: 1.6;
+    color: #666;
+  }
   
   
   /*-----------------------------------*\
@@ -856,12 +872,7 @@
   .breadcumb-link:is(:hover, :focus) { color: var(--emerald); }
   
   
-  
-  
-  
-  /*-----------------------------------*\
-    #MEDIA QUERIES
-  \*-----------------------------------*/
+
   
   /**
    * responsive for larger than 480px screen

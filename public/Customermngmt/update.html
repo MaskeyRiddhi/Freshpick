@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Customer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        #customerId {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="updateForm">
+        <h1 id="customerId">Selected User ID: </h1> <!-- New element to display customer ID -->
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name"><br>
+        
+        <label for="address">Address</label><br>
+        <input type="text" id="address" name="address"><br>
+    
+        <label for="email">Email</label><br>
+        <input type="text" id="email" name="email"><br>
+    
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="password"><br>
+    
+        <button type="submit">Update</button>
+    </form>
+    
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOMContentLoaded event fired');
+
+    // Function to extract query parameters from URL
+    const getQueryParams = () => {
+        const params = {};
+        const queryString = window.location.search.substring(1);
+        const queryParams = queryString.split('&');
+        queryParams.forEach(param => {
+            const pair = param.split('=');
+            params[pair[0]] = decodeURIComponent(pair[1]);
+        });
+        return params;
+    };
+
+    // Function to fill form fields with customer details
+   // Function to fill form fields with customer details
+const fillFormWithCustomerDetails = () => {
+    const queryParams = getQueryParams();
+    console.log('Query Parameters:', queryParams); // Log query parameters to console
+    const customerId = queryParams.id || '';
+    console.log('Customer ID:', customerId); // Log customer ID to console
+    document.getElementById('name').value = queryParams.name || '';
+    console.log('Name:', queryParams.name); // Log name to console
+    document.getElementById('address').value = queryParams.address || '';
+    console.log('Address:', queryParams.address); // Log address to console
+    document.getElementById('email').value = queryParams.email || '';
+    console.log('Email:', queryParams.email); // Log email to console
+    document.getElementById('password').value = queryParams.password || '';
+    console.log('Password:', queryParams.password); // Log password to console
+    document.getElementById('customerId').innerText = `Selected User ID: ${customerId}`;
+};
+
+
+    // Call the function to fill the form when the page loads
+    fillFormWithCustomerDetails();
+
+    // Function to handle form submission
+    const updateCustomer = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Extract customer details from the form
+    const username = document.getElementById('name').value;
+    const address = document.getElementById('address').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;  
+
+    // Check if any field is empty
+    if (!username || !address || !email || !password) {
+        alert('All fields are required. Please fill in all fields.');
+        return; // Exit the function if any field is empty
+    }
+
+    try {
+        // Extract customer ID from the query parameters
+        const customerId = getQueryParams().id;
+        console.log(customerId);
+        const response = await fetch(`/api/upcus/${customerId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, address, email, password })
+        });
+
+        if (!response.ok) {
+            throw new Error('Error updating customer');
+        }
+
+        alert('Customer updated successfully!');
+        window.location.href="deletecus.html";
+        // Optionally, redirect to another page or perform any other action after successful update
+    } catch (error) {
+        console.error('Error updating customer:', error);
+        alert('An error occurred while updating customer');
+    }
+};
+
+
+    // Add event listener to the form for form submission
+    const updateForm = document.getElementById('updateForm');
+    updateForm.addEventListener('submit', (updateCustomer));
+});
+
+
+    </script>
+</body>
+</html>

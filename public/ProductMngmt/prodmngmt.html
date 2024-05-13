@@ -5,14 +5,45 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Customer</title>
+  <title>Products</title>
   <!-- ======= Styles ====== -->
-  <link rel="stylesheet" href="prodmngmt.css" />
-  <!-- <link
-      rel="shortcut icon"
-      type="image/png"
-      href="./assets/imgs/favicon.ico"
-    /> -->
+  <link rel="stylesheet" href="prodmngmt.css">
+
+  <style>
+    .yessnoo{
+      display: flex;
+      justify-content: space-around;
+    }
+    #yess{
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 25px;
+      margin-top:20px;
+      width: 90px;
+    }
+    #Noo{
+      
+      
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 25px;
+      margin-top:20px;
+      width: 90px;
+    }
+    #confirm{
+      color:white;
+      font-size: 25px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -49,7 +80,7 @@
 
 
         <li>
-          <a href="farmermngmt.html">
+          <a href="../farmerMngmt/farmermngmt.html">
             <span class="icon">
               <ion-icon name="man-outline"></ion-icon>
             </span>
@@ -66,25 +97,32 @@
           </a>
         </li>
 
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="list-outline"></ion-icon>
-            </span>
-            <span class="title">Categories</span>
-          </a>
-        </li>
-
+      
 
 
         <li>
-          <a href="#">
+          <a href="javascript:void(0);" onclick="showLogoutForm()">
             <span class="icon">
-              <ion-icon name="log-out-outline"></ion-icon>
+                <ion-icon name="log-out-outline"></ion-icon>
             </span>
             <span class="title">Sign Out</span>
-          </a>
+        </a>
         </li>
+        
+        <!-- Logout Form -->
+
+        <div id="logoutForm" style="display: none;">
+        <form id="confirmLogoutForm" action="../adminlogin.html">
+          <p id="confirm">Are you sure you want to log out?</p>
+          <div class="yessnoo">
+          <button type="submit" id="yess">Yes</button>
+          <button type="button"id="Noo" onclick="hideLogoutForm()">No</button>
+        </div>
+        </form>
+      </div> 
+
+
+
       </ul>
     </div>
 
@@ -131,49 +169,30 @@
 
    
   
-      <!-- Best Selling Products card -->
+      <!-- Best Selling Products card --><!-- Best Selling Products card -->
 <div class="details">
-    <div class="cards">
-      <div class="cardHeader">
-        <h2>Best Selling Products</h2>
-        
-        <div class="Manage">
-            <a href="delprods.html" class="btn">Manage Product</a>
-          </div>
+  <div class="cards">
+    <div class="cardHeader">
+      <h2>Best Selling Products</h2>
+      <div class="Manage">
+        <a href="delprods.html" class="btn">Manage Product</a>
       </div>
-      <table id="bestSellingTable">
-        <thead>
-          <tr>
-            <td>Name</td>
-            <td>Price</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Lorem Ipsum</td>
-            <td>Apple</td>
-          </tr>
-          <tr>
-            <td>Lorem Ipsum</td>
-            <td>Banana</td>
-          </tr>
-          <tr>
-            <td>Lorem Ipsum</td>
-            <td>Cheese</td>
-          </tr>
-          <tr>
-            <td>Lorem Ipsum</td>
-            <td>Chicken</td>
-          </tr>
-          <tr>
-            <td>Lorem Ipsum</td>
-            <td>Carrot</td>
-          </tr>
-          <!-- Other recent orders -->
-        </tbody>
-      </table>
     </div>
+    <table id="bestSellingTable">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Price</td>
+          <td>Description</td>
+        </tr>
+      </thead>
+      <tbody id="productTableBody">
+        <!-- Product details will be dynamically added here -->
+      </tbody>
+    </table>
   </div>
+</div>
+
   
     <div class="manageCategories">
         <a href="category.html" class="btn">Manage Product Categories</a>
@@ -183,9 +202,6 @@
 
   <!-- End of footer -->
 
-  <!-- =========== Scripts =========  -->
-  <script src="../admin.js"></script>
-
   <!-- ====== ionicons ======= -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -193,35 +209,43 @@
 
   <script>
    document.addEventListener('DOMContentLoaded', function () {
-    // Fetch customer data
-    fetch('/api/getfarmer')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Populate the customer table
-            data.forEach(customer => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${customer.username}</td>
-                    <td>${customer.address}</td>
-                    <td>${customer.email}</td>
-                `;
-                document.querySelector('#customerTable tbody').appendChild(row);
-            });
-
-            // Update total number of customers
-            const totalCustomersElement = document.querySelector('.numbers');
-            totalCustomersElement.textContent = data.length;
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+  // Fetch product data
+  fetch('/api/getproducts') // Update the endpoint based on your server route
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Populate the product table
+      const productTableBody = document.getElementById('productTableBody');
+      data.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${product.productName}</td>
+          <td>${product.price}</td>
+          <td>${product.description}</td>
+        `;
+        productTableBody.appendChild(row);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
 });
 
+  </script>
+
+  
+<script>
+  function showLogoutForm() {
+    document.getElementById("logoutForm").style.display = "block";
+  }
+  
+  function hideLogoutForm() {
+    document.getElementById("logoutForm").style.display = "none";
+  }
   </script>
 </body>
 
