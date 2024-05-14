@@ -96,6 +96,7 @@ const C_login_routes = require('./LoginRoutes/C_login_routes.js');
 const A_login_routes = require('./LoginRoutes/A_login_routes.js');
 const productRoutes = require('./PostRoutes/productRoutes.js');
 const categoryRoutes = require('./PostRoutes/categoryRoutes.js');
+const orderRoutes = require('./PostRoutes/orderRoutes.js');
 
 
 
@@ -145,6 +146,7 @@ app.use('/api', C_login_routes);
 app.use('/api', A_login_routes);
 app.use('/api', productRoutes);
 app.use('/api', categoryRoutes);
+app.use('/api', orderRoutes);
 
 // For Get Operations
 app.use('/api', customer_name);
