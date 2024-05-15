@@ -121,113 +121,113 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.total').textContent = `Rs ${total}`;
     }
 
-    // checkout.js snippet for form submission
-form.addEventListener('submit', async (event) => {
-    event.preventDefault();
+//     // checkout.js snippet for form submission
+// form.addEventListener('submit', async (event) => {
+//     event.preventDefault();
 
-    const email = form.querySelector('input[name="email"]').value;
-    const phone = parseInt(form.querySelector('input[name="phone"]').value.replace(/[^\d]/g, ""), 10);  // Cleans phone input and converts to Number
-    const name = form.querySelector('input[name="name"]').value;
-    const address = form.querySelector('input[name="address"]').value;
-    const city = form.querySelector('input[name="city"]').value;
-    const country = form.querySelector('select[name="country"]').value;
+//     const email = form.querySelector('input[name="email"]').value;
+//     const phone = parseInt(form.querySelector('input[name="phone"]').value.replace(/[^\d]/g, ""), 10);  // Cleans phone input and converts to Number
+//     const name = form.querySelector('input[name="name"]').value;
+//     const address = form.querySelector('input[name="address"]').value;
+//     const city = form.querySelector('input[name="city"]').value;
+//     const country = form.querySelector('select[name="country"]').value;
 
-    const orderDetails = {
-        email,
-        phone,
-        name,
-        address,
-        city,
-        country,
-    };
+//     const orderDetails = {
+//         email,
+//         phone,
+//         name,
+//         address,
+//         city,
+//         country,
+//     };
 
-    try {
-        const response = await fetch('/api/orders', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(orderDetails)
-        });
+//     try {
+//         const response = await fetch('/api/orders', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(orderDetails)
+//         });
 
-        if (response.ok) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Order Placed!',
-                text: 'Your order has been successfully submitted.',
-            }).then(() => {
-                window.location.href = 'final.html';
-            });
-        } else {
-            throw new Error('Failed to place order');
-        }
-    } catch (error) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: error.message,
-        });
-    }
-});
-
-
-//     // Submit the form data to the server
-//     form.addEventListener('submit', async (event) => {
-//         event.preventDefault();
-
-//         const email = form.querySelector('input[name="email"]').value;
-//         const phone = form.querySelector('input[name="phone"]').value;
-//         const name = form.querySelector('input[name="name"]').value;
-//         const address = form.querySelector('input[name="address"]').value;
-//         const city = form.querySelector('input[name="city"]').value;
-//         const country = form.querySelector('select[name="country"]').value;
-
-//         const orderDetails = {
-//             email,
-//             phone,
-//             name,
-//             address,
-//             city,
-//             country,
-//             items: [
-//                 {
-//                     item: 'Orange',
-//                     quantity: parseInt(document.querySelector('input[name="bb-qty"]').value, 10),
-//                 },
-//                 {
-//                     item: 'Watermelon',
-//                     quantity: parseInt(document.querySelector('input[name="s-qty"]').value, 10),
-//                 }
-//             ],
-//             total: document.querySelector('.total').textContent
-//         };
-
-//         try {
-//             const response = await fetch('/submit-order', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify(orderDetails)
-//             });
-
-//             if (response.ok) {
-//                 Swal.fire({
-//                     icon: 'success',
-//                     title: 'Order Placed!',
-//                     text: 'Your order has been successfully submitted.',
-//                 }).then(() => {
-//                     window.location.href = 'final.html';
-//                 });
-//             } else {
-//                 throw new Error('Failed to place order');
-//             }
-//         } catch (error) {
+//         if (response.ok) {
 //             Swal.fire({
-//                 icon: 'error',
-//                 title: 'Error',
-//                 text: error.message,
+//                 icon: 'success',
+//                 title: 'Order Placed!',
+//                 text: 'Your order has been successfully submitted.',
+//             }).then(() => {
+//                 window.location.href = 'final.html';
 //             });
+//         } else {
+//             throw new Error('Failed to place order');
 //         }
-//     });
+//     } catch (error) {
+//         Swal.fire({
+//             icon: 'error',
+//             title: 'Error',
+//             text: error.message,
+//         });
+//     }
 // });
+
+
+// //     // Submit the form data to the server
+// //     form.addEventListener('submit', async (event) => {
+// //         event.preventDefault();
+
+// //         const email = form.querySelector('input[name="email"]').value;
+// //         const phone = form.querySelector('input[name="phone"]').value;
+// //         const name = form.querySelector('input[name="name"]').value;
+// //         const address = form.querySelector('input[name="address"]').value;
+// //         const city = form.querySelector('input[name="city"]').value;
+// //         const country = form.querySelector('select[name="country"]').value;
+
+// //         const orderDetails = {
+// //             email,
+// //             phone,
+// //             name,
+// //             address,
+// //             city,
+// //             country,
+// //             items: [
+// //                 {
+// //                     item: 'Orange',
+// //                     quantity: parseInt(document.querySelector('input[name="bb-qty"]').value, 10),
+// //                 },
+// //                 {
+// //                     item: 'Watermelon',
+// //                     quantity: parseInt(document.querySelector('input[name="s-qty"]').value, 10),
+// //                 }
+// //             ],
+// //             total: document.querySelector('.total').textContent
+// //         };
+
+// //         try {
+// //             const response = await fetch('/submit-order', {
+// //                 method: 'POST',
+// //                 headers: {
+// //                     'Content-Type': 'application/json'
+// //                 },
+// //                 body: JSON.stringify(orderDetails)
+// //             });
+
+// //             if (response.ok) {
+// //                 Swal.fire({
+// //                     icon: 'success',
+// //                     title: 'Order Placed!',
+// //                     text: 'Your order has been successfully submitted.',
+// //                 }).then(() => {
+// //                     window.location.href = 'final.html';
+// //                 });
+// //             } else {
+// //                 throw new Error('Failed to place order');
+// //             }
+// //         } catch (error) {
+// //             Swal.fire({
+// //                 icon: 'error',
+// //                 title: 'Error',
+// //                 text: error.message,
+// //             });
+// //         }
+// //     });
+});

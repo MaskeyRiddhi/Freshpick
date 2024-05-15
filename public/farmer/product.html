@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product List</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
+  <title>Product List</title>
+
+  <!--  custom css link -->
+  <link rel="stylesheet" href="../FarmerHomepage.css">
+  <link rel="stylesheet" href="../home.css">
+
+  <!--  google font link-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
     <style>
         /* CSS styles for the layout */
         body {
@@ -11,8 +25,9 @@
         }
        .product-card {
             display: inline-block;
-            width: calc(25% - 20px); /* Adjust the width as needed */
+            width: calc(23% - 20px); /* Adjust the width as needed */
             margin-right: 20px;
+            margin-left: 20px;
             margin-bottom: 20px;
             background-color: #f2f2f2;
             padding: 10px;
@@ -31,15 +46,10 @@
        .product-description {
             margin-bottom: 5px;
         }
-       /* .product-image {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }*/
          .manage-button-container {
             position: absolute;
-            top: 0;
-            right: 0;
+            top: 0px;
+            right: 0px;
             padding: 10px;
         }
        .manage-button {
@@ -57,20 +67,64 @@
         } 
     </style>
 </head>
-<body>
-    
-    <div id="headerContainer" style="position: relative;">
-        <h1>Product Details</h1>
-        <div class="manage-button-container">
-            <button class="manage-button" id="manage-button">Manage product</button>
-        </div>
-    </div>
-    <div id="productList" class="product-list">
-        <!-- Product cards will be dynamically inserted here -->
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+<body id="top">
+  <!--   - #HEADER -->
+  <header class="header" data-header>
+    <div class="nav-wrapper">
+      <div class="container">
+        <h1 class="h1">
+          <a href="./index.html" class="logo">Fresh<span class="span">Picks</span></a>
+        </h1>
+
+        <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <nav class="navbar" data-navbar>
+
+          <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <ul class="navbar-list">
+
+            <li>
+              <a href="../FarmerHomepage.html" class="navbar-link">Home</a>
+            </li>
+
+            <li>
+              <a href="./product.html" class="navbar-link">Products</a>
+            </li>
+
+            <li>
+              <a href="../FarmerHomepage.html#footers" class="navbar-link">Contact</a>
+            </li>
+            
+            <li>
+              <a href="#" id="signout" class="navbar-link">Signout</a>
+            </li>
+
+          </ul>
+        </nav>
+
+        <div class="header-action"> </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="headerContainer" style="position: relative;">
+    <div class="manage-button-container">
+        <button class="manage-button" id="manage-button">Manage product</button>
+    </div>
+</div>
+<div id="productList" class="product-list" style="margin-top: 70px">
+    <!-- Product cards will be dynamically inserted here -->
+</div>
+
+
+<script>
+     document.addEventListener('DOMContentLoaded', () => {
             // Fetch product data from the API
             fetch('/api/getproducts')
                 .then(response => response.json())
@@ -82,16 +136,17 @@
                         const productCard = document.createElement('div');
                         productCard.classList.add('product-card');
 
-                        const productImage = document.createElement('div');
-                        productImage.classList.add('product-image');
-                        const img = document.createElement('img');
-                        img.src = product.imageUrl;
-                        img.alt = product.name;
-                        productImage.appendChild(img);
-
                         const productName = document.createElement('div');
                         productName.classList.add('product-name');
                         productName.textContent = product.productName;
+
+                        const productFarmer = document.createElement('div');
+  productFarmer.classList.add('product-farmer');
+  productFarmer.textContent = `Farmer: ${product.farmer || 'Unknown'}`;
+
+                        const productCategory = document.createElement('div');
+                        productCategory.classList.add('product-category');
+                        productCategory.textContent = product.category; 
 
                         const productPrice = document.createElement('div');
                         productPrice.classList.add('product-price');
@@ -101,9 +156,11 @@
                         productDescription.classList.add('product-description');
                         productDescription.textContent = product.description;
 
-                        productCard.appendChild(productImage);
+                        // productCard.appendChild(productImage);
                         productCard.appendChild(productName);
                         productCard.appendChild(productPrice);
+                        productCard.appendChild(productCategory);
+                        productCard.appendChild(productFarmer);
                         productCard.appendChild(productDescription);
 
                         productList.appendChild(productCard);
@@ -118,6 +175,19 @@
                 window.location.href = './delprods.html';
             });
         });
-    </script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const signoutButton = document.getElementById('signout');
+    signoutButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      
+      const isConfirmed = confirm("Are you sure you want to log out?");
+
+      if (isConfirmed) {
+        window.location.href = "../index.html";
+      }
+    });
+  });
+</script>
 </body>
 </html>

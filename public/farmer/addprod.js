@@ -1,61 +1,84 @@
 
-        document.addEventListener('DOMContentLoaded', async () => {
-            const addProductForm = document.getElementById('addProductForm');
+document.addEventListener('DOMContentLoaded', async () => {
+    const addProductForm = document.getElementById('addProductForm');
 
-            addProductForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
+    // Get the category ID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryId = urlParams.get('category');
+    
+    // Automatically populate the category input field with category ID
+    document.getElementById('productCategory').value = categoryId;
 
-                const productName = document.getElementById('productName').value;
-                const price = document.getElementById('price').value;
-                const description = document.getElementById('description').value;
-                const image = document.getElementById('image').value;
+    // Fetch farmers from the server
+    try {
+        console.log('Fetching farmers...');
+        const response = await fetch('/api/getfarmer');
+        if (!response.ok) {
+            throw new Error('Failed to fetch farmers');
+        }
+        const farmers = await response.json();
+        console.log('Farmers fetched:', farmers);  // Log the fetched farmers to verify the data
 
-                try {
-                    const response = await fetch('/api/Products', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            productName,
-                            price,
-                            description,
-                            category,
-                            image
-                            
-                        })
-                    });
+        const farmerSelect = document.getElementById('farmername');
+        if (!farmerSelect) {
+            throw new Error('Farmer select element not found');
+        }
 
-                    if (!response.ok) {
-                        throw new Error('Failed to add product');
-                    }
-                    window.location.href = './product.html';
-                    // const product = await response.json();
-                    // console.log('Product added:', product);
-                    // Optionally, you can redirect or show a success message here
-                } catch (error) {
-                    console.error('Error adding product:', error);
-                    // Optionally, you can show an error message to the user
-                }
-            });
+        // Clear any existing options
+        farmerSelect.innerHTML = '';
+
+        // Populate the farmer dropdown
+        farmers.forEach(farmer => {
+            const option = document.createElement('option');
+            option.textContent = farmer.username; // Assuming farmer has a name property
+            farmerSelect.appendChild(option);
         });
-   
 
-// document.getElementById('addProduct').addEventListener('submit', function(event) {
-//   event.preventDefault();
-//   const formData = new FormData(this);
+        console.log('Farmer dropdown populated:', farmerSelect.innerHTML);  // Log the innerHTML of the dropdown
+    } catch (error) {
+        console.error('Error fetching farmers:', error);
+        // Display an error message to the user
+        alert('Failed to load farmers. Please try again later.');
+    }
 
-//   fetch('/api/add_product', { // Ensure this matches the endpoint defined in your routes
-//       method: 'POST',
-//       body: formData
-//   })
-//   .then(response => response.json())
-//   .then(data => {
-//       alert('Product added successfully');
-//       window.location.href = '/product.html'; // Redirect or handle next steps
-//   })
-//   .catch(error => {
-//       console.error('Error adding product:', error);
-//       alert('Error adding product');
-//   });
-// });
+    addProductForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        const formData = new FormData(addProductForm);
+        const productName = formData.get('productName');
+        const price = formData.get('price');
+        const description = formData.get('description');
+        const category = formData.get('productCategory');  // Now correctly gathering the category data
+        const farmer = formData.get('farmername');
+
+        // Validate form fields
+        if (!productName || !price || !description || !category || !farmer) {
+            alert('Please fill in all fields.');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/Products', {
+                method: 'POST',
+                body: JSON.stringify({
+                    productName,
+                    price,
+                    description,
+                    category,
+                    farmer
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Failed to add product');
+            }
+            window.location.href = './product.html';  // Redirect or show a success message
+        } catch (error) {
+            console.error('Error adding product:', error);
+            // Show an error message to the user
+            alert('Failed to add product. Please try again.');
+        }
+    });
+});
