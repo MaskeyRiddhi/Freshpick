@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <title>Add products</title>
     <link rel="stylesheet" href="addprod.css" />
 </head>
+
 <body>
+
     <div class="container">
         <div class="details">
             <div class="category">
+                <div id="cross-icon-container">
+                    <i id="cross-icon" class="fas fa-times"></i>
+                </div>
                 <div class="cardHeader">
                     <h2>Product Category</h2>
                 </div>
@@ -30,41 +37,45 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-    const categoryTableBody = document.querySelector('#categoryTable tbody');
+            const categoryTableBody = document.querySelector('#categoryTable tbody');
 
-    // Function to fetch categories from the server
-    const fetchCategories = async () => {
-        try {
-            const response = await fetch('/api/getcategory');
-            if (!response.ok) {
-                throw new Error('Failed to fetch categories');
-            }
-            const categories = await response.json();
-            return categories;
-        } catch (error) {
-            console.error(error);
-        }
-    };
+            // Function to fetch categories from the server
+            const fetchCategories = async () => {
+                try {
+                    const response = await fetch('/api/getcategory');
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch categories');
+                    }
+                    const categories = await response.json();
+                    return categories;
+                } catch (error) {
+                    console.error(error);
+                }
+            };
 
-    // Function to populate category table with category names
-    const populateCategoryTable = async () => {
-        const categories = await fetchCategories();
-        categoryTableBody.innerHTML = ''; // Clear existing table rows
-        categories.forEach(category => {
-            const categoryName = category.name; // Assuming 'name' is the property containing category name
-            const row = document.createElement('tr');
-            row.innerHTML = `
+            // Function to populate category table with category names
+            const populateCategoryTable = async () => {
+                const categories = await fetchCategories();
+                categoryTableBody.innerHTML = '';
+                categories.forEach(category => {
+                    const categoryName = category.name;
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
                 <td>${categoryName}</td>
                 <td><a href="add.html?category=${categoryName}"><span class="add-icon">+</span></a></td>
             `;
-            categoryTableBody.appendChild(row);
+                    categoryTableBody.appendChild(row);
+                });
+            };
+
+            // Initial population of category table
+            populateCategoryTable();
         });
-    };
 
-    // Initial population of category table
-    populateCategoryTable();
-});
-
+        document.getElementById('cross-icon-container').addEventListener('click', () => {
+            window.location.href = '../FarmerHomepage.html';
+        });
     </script>
 </body>
+
 </html>

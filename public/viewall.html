@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <title>Products and Prices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            color: #e56123;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #fec6ac;
+        }
+
+        #cross-icon-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e56123;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        #cross-icon {
+            color: white;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>All Products List</h2>
+    <div id="cross-icon-container">
+        <i id="cross-icon" class="fas fa-times"></i>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Apples</td>
+                <td>Rs 100</td>
+            </tr>
+            <tr>
+                <td>Bananas</td>
+                <td>Rs 100</td>
+            </tr>
+            <tr>
+                <td>Carrots</td>
+                <td>Rs 100</td>
+            </tr>
+            <tr>
+                <td>Tomatoes</td>
+                <td>Rs 100</td>
+            </tr>
+            <tr>
+                <td>Broccoli</td>
+                <td>Rs 100</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const crossIcon = document.getElementById("cross-icon");
+
+            crossIcon.addEventListener("click", function () {
+                // Redirect to the signup page
+                window.location.href = "user.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

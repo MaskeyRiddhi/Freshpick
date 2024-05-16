@@ -22,7 +22,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
-</head>
+</head>         
 
 <body id="top">
 
@@ -31,10 +31,10 @@
   <header class="header" data-header>
 
     <div class="nav-wrapper">
-      <div class="container">
+      <div class="container"> 
 
         <h1 class="h1">
-          <a href="./index.html" class="logo">Fresh<span class="span">Picks</span></a>
+          <a class="logo">Fresh<span class="span">Picks</span></a>
         </h1>
 
         <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
@@ -46,15 +46,11 @@
           <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
             <ion-icon name="close-outline"></ion-icon>
           </button>
-
+         
           <ul class="navbar-list">
 
             <li>
               <a href="./user.html" class="navbar-link">Home</a>
-            </li>
-
-            <li>
-              <a href="#about-us" class="navbar-link">About</a>
             </li>
 
             <li>
@@ -65,6 +61,10 @@
               <a href="#footers" class="navbar-link" onclick="scrollToSection('footers')">Contact</a>
           </li>
           
+          <li>
+            <a href="#enquiries" class="navbar-link" onclick="scrollToSection('enquiries')">Enquiry</a>
+        </li>
+
           <li>
             <a href="#" id="signout" class="navbar-link">Signout</a>
           </li>
@@ -96,13 +96,13 @@
           <button class="header-action-btn" aria-label="Open whishlist" data-panel-btn="whishlist">
             <ion-icon name="heart-outline"></ion-icon>
 
-            <data class="btn-badge" value="3">03</data>
+            <data class="btn-badge" value=""></data>
           </button>
 
           <button class="header-action-btn" aria-label="Open shopping cart" data-panel-btn="cart">
             <ion-icon name="basket-outline"></ion-icon>
 
-            <data class="btn-badge" value="2">02</data>
+            <data class="btn-badge" value=""></data>
           </button>
 
         </div>
@@ -111,10 +111,6 @@
     </div>
 
   </header>
-
-
-
-
 
   <!-- 
     - #ASIDE
@@ -127,83 +123,26 @@
       <button class="panel-close-btn" aria-label="Close whishlist" data-panel-btn="whishlist">
         <ion-icon name="close-outline"></ion-icon>
       </button>
-
       <ul class="panel-list">
-
-        <!-- <li class="panel-item">
-          <a href="./product-details.html" class="panel-card">
-
-            <figure class="item-banner">
-              <img src="./user/onion.png" width="46" height="46" loading="lazy"
-                alt="Onion">
-            </figure>
-
-            <div>
-              <p class="item-title">Onion</p>
-
-              <span class="item-value">Rs 100</span>
-            </div>
-
-            <button class="item-close-btn" aria-label="Remove item">
-              <ion-icon name="close-outline"></ion-icon>
-            </button> -->
-<!-- 
-          </a>
-        </li> -->
-
-        <!-- <li class="panel-item">
-          <a href="./product-details.html" class="panel-card">
-
-            <figure class="item-banner">
-              <img src="./user/orange.png" width="46" height="46" loading="lazy" alt="Orange">
-            </figure>
-
-            <div>
-              <p class="item-title">Orange</p>
-
-              <span class="item-value">Rs 100</span>
-            </div>
-
-            <button class="item-close-btn" aria-label="Remove item">
-              <ion-icon name="close-outline"></ion-icon>
-            </button> -->
-
-          <!-- </a>
-        </li> -->
-
         <li class="panel-item">
-          <a href="./product-details.html" class="panel-card">
-
-            <!-- <figure class="item-banner">
-              <img src="./user/strawberry.png" width="46" height="46" loading="lazy"
-                alt="Strawberry">
-            </figure>
-
-            <div>
-              <p class="item-title">Strawberry</p>
-
-              <span class="item-value">Rs 100</span>
-            </div>
-
-            <button class="item-close-btn" aria-label="Remove item">
-              <ion-icon name="close-outline"></ion-icon>
-            </button> -->
-
           </a>
         </li>
-
       </ul>
 
       <div class="subtotal">
         <p class="subtotal-text">Subtotal:</p>
-
-        <data class="subtotal-value" value="215.14">Rs 100</data>
+        <data class="subtotal-value" value="215.14">Rs 0</data>
       </div>
-
-      <a href="./whishlist.html" class="panel-btn">View Whishlist</a>
-
     </div>
 
+    <button class="scroll-btn" aria-label="Scroll wishlist">
+      <ion-icon name="arrow-down"></ion-icon>
+    </button>
+
+    <button class="scroll-btn" aria-label="Scroll cart">
+      <ion-icon name="arrow-down"></ion-icon>
+    </button>
+    
     <div class="side-panel" data-side-panel="cart">
 
       <button class="panel-close-btn" aria-label="Close cart" data-panel-btn="cart">
@@ -213,44 +152,7 @@
       <ul class="panel-list">
 
         <li class="panel-item">
-          <a href="./product-details.html" class="panel-card">
-
-            <!-- <figure class="item-banner">
-              <img src="./user/orange.png" width="46" height="46" loading="lazy"
-                alt="Orange">
-            </figure>
-
-            <div>
-              <p class="item-title">Orange</p>
-
-              <span class="item-value">Rs 100</span>
-            </div>
-
-            <button class="item-close-btn" aria-label="Remove item">
-              <ion-icon name="close-outline"></ion-icon>
-            </button> -->
-
-          </a>
         </li>
-
-        <li class="panel-item">
-          <a href="./product-details.html" class="panel-card">
-
-            <!-- <figure class="item-banner">
-              <img src="./user/strawberry.png" width="46" height="46" loading="lazy" alt="Strawberry">
-            </figure>
-
-            <div>
-              <p class="item-title">Strawberry</p>
-
-              <span class="item-value">Rs 100</span>
-            </div>
-
-            <button class="item-close-btn" aria-label="Remove item">
-              <ion-icon name="close-outline"></ion-icon>
-            </button> -->
-
-          </a>
         </li>
 
       </ul>
@@ -260,7 +162,7 @@
 
         <data class="subtotal-value" value="215.14">Rs 100</data>
       </div>
-
+            
       <a href="./checkout-shopping.html" class="panel-btn">View Cart</a>
 
     </div>
@@ -289,10 +191,11 @@
                 Local Farmer's Market at Your Fingertips!           
              </p>
 
-             <a href="#organic-products" class="btn btn-primary" onclick="scrollToSection('organic-products')">
-              <span class="span">Shop Now</span>
+             <a href="viewall.html" class="btn btn-primary">
+              <span class="span">View Products</span>
               <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
-           </a>
+            </a>
+            
            
 
           </div>
@@ -304,11 +207,7 @@
 
         </div>
       </section>
-
-
-
-
-
+      
       <!-- 
         - #SERVICE
       -->
@@ -397,12 +296,6 @@
         </div>
       </section>
 
-
-
-
-
-
-
       <!-- 
         - #PRODUCT
       -->
@@ -443,13 +336,13 @@
                 </div>
 
                 <h3 class="h4 card-title">
-                  <a href="./product-details.html">Watermelon</a>
+                  <!-- <a href="./product-details.html">Watermelon</a> -->
                 </h3>
 
                 <div class="price-wrapper">
                   <del class="del">Rs 175</del>
 
-                  <data class="price" value="100">Rs 100</data>
+                  <data class="price" value="100">Rs 300</data>
                 </div>
 
                 <button class="btn btn-primary">Add to Cart</button>
@@ -489,7 +382,7 @@
                 <div class="price-wrapper">
                   <del class="del">Rs 175</del>
 
-                  <data class="price" value="100">Rs 100</data>
+                  <data class="price" value="100">Rs 200</data>
                 </div>
 
                 <button class="btn btn-primary">Add to Cart</button>
@@ -741,7 +634,325 @@
               </div>
             </li>
 
-            
+            <!-- Buff  -->
+            <li>
+              <div class="product-card">
+
+                <figure class="card-banner">
+                  <img src="./user/meat1.png" width="189" height="189" loading="lazy" alt="Buff">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                  </div>
+                </figure>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">
+                  <a href="./product-details.html">Buff</a>
+                </h3>
+
+                <div class="price-wrapper">
+                  <del class="del">Rs 175</del>
+
+                  <data class="price" value="100">Rs 100</data>
+                </div>
+
+                <button class="btn btn-primary">Add to Cart</button>
+
+              </div>
+            </li>
+
+            <!-- Cheese  -->
+            <li>
+              <div class="product-card">
+
+                <figure class="card-banner">
+                  <img src="./user/cheese.png" width="189" height="189" loading="lazy" alt="Cheese">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                  </div>
+                </figure>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">
+                  <a href="./product-details.html">Cheese</a>
+                </h3>
+
+                <div class="price-wrapper">
+                  <del class="del">Rs 175</del>
+
+                  <data class="price" value="100">Rs 100</data>
+                </div>
+
+                <button class="btn btn-primary">Add to Cart</button>
+
+              </div>
+            </li>
+
+            <!-- Eggs -->
+            <li>
+              <div class="product-card">
+
+                <figure class="card-banner">
+                  <img src="./user/egg.png" width="189" height="189" loading="lazy" alt="Egg">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                  </div>
+                </figure>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">
+                  <a href="./product-details.html">Egg</a>
+                </h3>
+
+                <div class="price-wrapper">
+                  <del class="del">Rs 175</del>
+
+                  <data class="price" value="100">Rs 100</data>
+                </div>
+
+                <button class="btn btn-primary">Add to Cart</button>
+
+              </div>
+            </li>
+
+            <!-- Milk  -->
+            <li>
+              <div class="product-card">
+
+                <figure class="card-banner">
+                  <img src="./user/milk1.png" width="189" height="189" loading="lazy" alt="milk">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                  </div>
+                </figure>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">
+                  <a href="./product-details.html">Milk</a>
+                </h3>
+
+                <div class="price-wrapper">
+                  <del class="del">Rs 175</del>
+
+                  <data class="price" value="100">Rs 100</data>
+                </div>
+
+                <button class="btn btn-primary">Add to Cart</button>
+
+              </div>
+            </li>
+
+            <!-- Yogurt  -->
+            <li>
+              <div class="product-card">
+
+                <figure class="card-banner">
+                  <img src="./user/yogurt1.png" width="189" height="189" loading="lazy" alt="Yogurt">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                  </div>
+                </figure>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">
+                  <a href="./product-details.html">Yogurt</a>
+                </h3>
+
+                <div class="price-wrapper">
+                  <del class="del">Rs 175</del>
+
+                  <data class="price" value="100">Rs 100</data>
+                </div>
+
+                <button class="btn btn-primary">Add to Cart</button>
+
+              </div>
+            </li>
+
+            <!-- Chicken  -->
+            <li>
+              <div class="product-card">
+
+                <figure class="card-banner">
+                  <img src="./user/chicken3.png" width="189" height="189" loading="lazy" alt="Chicken">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                  </div>
+                </figure>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">
+                  <a href="./product-details.html">Chicken</a>
+                </h3>
+
+                <div class="price-wrapper">
+                  <del class="del">Rs 175</del>
+
+                  <data class="price" value="100">Rs 100</data>
+                </div>
+
+                <button class="btn btn-primary">Add to Cart</button>
+
+              </div>
+            </li>
+
+            <!-- Butter  -->
+            <li>
+              <div class="product-card">
+
+                <figure class="card-banner">
+                  <img src="./user/butter1.png" width="189" height="189" loading="lazy" alt="Butter">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                  </div>
+                </figure>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">
+                  <a href="./product-details.html">Butter</a>
+                </h3>
+
+                <div class="price-wrapper">
+                  <del class="del">Rs 175</del>
+
+                  <data class="price" value="100">Rs 100</data>
+                </div>
+
+                <button class="btn btn-primary">Add to Cart</button>
+
+              </div>
+            </li>
+
+            <!-- Butter  -->
+            <li>
+              <div class="product-card">
+
+                <figure class="card-banner">
+                  <img src="./user/tomato1.png" width="189" height="189" loading="lazy" alt="Butter">
+
+                  <div class="btn-wrapper">
+                    <button class="product-btn" aria-label="Add to Whishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+
+                      <div class="tooltip">Add to Whishlist</div>
+                    </button>
+
+                  </div>
+                </figure>
+
+                <div class="rating-wrapper">
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                </div>
+
+                <h3 class="h4 card-title">
+                  <a href="./product-details.html">Butter</a>
+                </h3>
+
+                <div class="price-wrapper">
+                  <del class="del">Rs 175</del>
+
+                  <data class="price" value="100">Rs 100</data>
+                </div>
+
+                <button class="btn btn-primary">Add to Cart</button>
+
+              </div>
+            </li>
 
           </ul>
 
@@ -1168,17 +1379,24 @@
   </main>
 
 
+  <!-- #Enquiry form
+   -->
+   <div id="enquiries" class="enquiry">
+    <h2>Enquiry Form</h2>
+    <form action="https://api.web3forms.com/submit" method="POST">
 
-   <!-- About Us Section -->
-  <section id="about-us" class="section">
-    <div class="about-section">
-      <h2 class="h2 section-title">About Us</h2>
-      <p>Welcome to FreshPicks, your local farmers market connecting you with fresh, locally grown produce and artisanal products.</p>
-      <p>At FreshPicks, we are committed to supporting sustainable agriculture practices and fostering a vibrant local economy. Our mission is to provide a platform for local farmers and artisans to sell their products directly to the community, creating a sustainable and thriving local food system.</p>
-      <p>We believe in promoting healthy eating habits, supporting small-scale farmers and producers, and building connections between producers and consumers.</p>
-    </div>
-  </section>
+      <input type="hidden" name="access_key" value="034f4d6a-8786-403e-8d43-138188b6745a">
 
+      <input type="text" id="name" name="name" placeholder="Your name" required>
+  
+      <input type="text" id="email" name="email" placeholder="Your email" required>
+  
+      <textarea id="message" name="message" placeholder="How can we help you?" style="height:100px" required></textarea>
+  
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  
 
   <!-- 
     - #FOOTER
@@ -1194,7 +1412,7 @@
           <a href="./index.html" class="logo">Fresh<span class="span">Picks</span></a>
 
           <p class="footer-text">
-           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta rerum quo rem dolores tenetur, nulla reprehenderit aut blanditiis assumenda corrupti iste. Harum cum tenetur distinctio laborum, quibusdam officia eos recusandae?
+            Welcome to FreshPicks, your local farmers market connecting you with fresh, locally grown produce and artisanal products. At FreshPicks, we are committed to supporting sustainable agriculture practices and fostering a vibrant local economy. Our mission is to provide a platform for local farmers and artisans to sell their products directly to the community, creating a sustainable and thriving local food system. We believe in promoting healthy eating habits, supporting small-scale farmers and producers, and building connections between producers and consumers.
           </p>
 
           <ul class="social-list">
@@ -1288,7 +1506,7 @@
   </footer>
 
 
-
+x
   <!-- 
     - #BACK TO TOP
   -->
@@ -1297,36 +1515,15 @@
     <ion-icon name="arrow-up-outline"></ion-icon>
   </a>
 
-
-
-
-
-  <!-- 
-    - custom js link
-  -->
-  <script src="user.js"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const signoutButton = document.getElementById('signout');
-      signoutButton.addEventListener('click', function(event) {
-        event.preventDefault();
-        
-        const isConfirmed = confirm("Are you sure you want to log out?");
-  
-        if (isConfirmed) {
-          window.location.href = "./index.html";
-        }
-      });
-    });
-  </script>
-
   <!-- 
     - ionicon link
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+  <script src="WishList.js"></script>
+  <script src="addtocart.js"></script>
+  <script src="user.js"></script>
+  <script src="Search.js"></script>
   
 </body>
 </html>

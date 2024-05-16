@@ -68,15 +68,15 @@
         <label for="description">Description</label><br>
         <input type="text" id="description" name="description"><br>
     
-        <label for="category">Category</label><br>
-        <input type="text" id="category" name="category"><br>
+        <!-- <label for="category">Category</label><br>
+        <input type="text" id="category" name="category"><br> -->
     
         <button type="submit" id="updateButton">Update</button>
     </form>
     
 
     <script>
-       document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired');
 
     // Function to extract query parameters from URL
@@ -91,18 +91,15 @@
         return params;
     };
 
-  
 const fillFormWithProductDetails = () => {
                 const queryParams = getQueryParams();
                 const productId = queryParams.id || '';
                 const productName = queryParams.productName || ''; // Extract name from query parameters
                 const price = queryParams.price || '';
                 const description = queryParams.description || '';
-                const category = queryParams.category || '';
                 document.getElementById('productName').value = productName; // Assign name to input element
                 document.getElementById('price').value = price;
                 document.getElementById('description').value = description;
-                document.getElementById('category').value = category;
                 document.getElementById('productId').innerText = `Selected User ID: ${productId}`;
             };
 
@@ -118,9 +115,8 @@ const fillFormWithProductDetails = () => {
         const productName = document.getElementById('productName').value;
         const price = document.getElementById('price').value;
         const description = document.getElementById('description').value;
-        const category = document.getElementById('category').value;  
          // Check if any field is empty
-         if (!productName || !price || !description || !category) {
+         if (!productName || !price || !description ) {
                     alert('All fields are required. Please fill in all fields.');
                     return; // Exit the function if any field is empty
                 }
@@ -134,7 +130,7 @@ const fillFormWithProductDetails = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ productName, price, description, category })
+                body: JSON.stringify({ productName, price, description })
             });
 
             if (!response.ok) {
@@ -155,8 +151,6 @@ const fillFormWithProductDetails = () => {
     const updateForm = document.getElementById('updateForm');
     updateForm.addEventListener('submit', updateProduct);
 });
-
-
     </script>
 </body>
 </html>

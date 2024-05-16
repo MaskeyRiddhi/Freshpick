@@ -141,7 +141,7 @@
 
         <div class="card">
           <div>
-            <div class="numbers">100</div>
+            <div class="numbers" id="totalProductsCount">100</div>
             <div class="cardName">Total Products</div>
 
           </div>
@@ -205,39 +205,7 @@
   <!-- ====== ionicons ======= -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
-  <script>
-   document.addEventListener('DOMContentLoaded', function () {
-  // Fetch product data
-  fetch('/api/getproducts') // Update the endpoint based on your server route
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Populate the product table
-      const productTableBody = document.getElementById('productTableBody');
-      data.forEach(product => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${product.productName}</td>
-          <td>${product.price}</td>
-          <td>${product.description}</td>
-        `;
-        productTableBody.appendChild(row);
-      });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
-});
-
-  </script>
-
-  
+<script src="prodmngmt.js"></script>
 <script>
   function showLogoutForm() {
     document.getElementById("logoutForm").style.display = "block";

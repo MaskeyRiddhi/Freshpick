@@ -100,12 +100,14 @@ document.addEventListener("DOMContentLoaded", function() {
   signoutButton.addEventListener('click', function(event) {
     // Prevent the default action of the link
     event.preventDefault();
-    
-    // Display confirmation dialog
-    const isConfirmed = confirm("Are you sure you want to log out?");
 
-    // If user confirms, redirect to index.html
+    // Display a confirmation dialog with a custom message and OK/Cancel buttons
+    const confirmationMessage = "Are you sure you want to log out?";
+    const isConfirmed = confirm(confirmationMessage);
+
+    // If user confirms, perform logout actions
     if (isConfirmed) {
+      // Redirect to index.html immediately after confirmation
       window.location.href = "./index.html";
     }
   });

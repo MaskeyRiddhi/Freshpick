@@ -266,10 +266,6 @@ body {
   position: relative;
   width: 100%;
   padding: 20px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 30px;
-  /* margin-top: 10px; */
 }
 
 .details .cards {
@@ -373,28 +369,32 @@ body {
   text-decoration: none;
 }
 
-.footer p,
-a {
-  letter-spacing: 1px;
-  text-decoration: none;
+
+.manageCategories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px; /* Adjust top margin */
 }
+
 .manageCategories .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--blue);
-    color: var(--white);
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Added color transition */
-    border: 2px solid var(--blue); /* Added border with blue color */
-    margin:25px;
-  }
-  
-  .manageCategories .btn:hover {
-    background-color: var(--white);
-    color: var(--blue);
-    border-color: var(--blue); /* Set border color on hover */
-  }
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; 
+  border: 2px solid var(--blue);
+  margin-bottom: 80px;
+}
+
+.manageCategories .btn:hover {
+  background-color: var(--white);
+  color: var(--blue);
+  border-color: var(--blue); 
+}
+
   .cardHeader .Manage .btn {
     display: inline-block;
     padding: 10px 20px;

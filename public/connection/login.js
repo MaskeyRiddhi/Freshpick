@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const password = document.getElementById('password_for_login').value;
     const role = roleSelect.value; // Get the selected role from the dropdown
 
+    // Check if any field is empty
+    if(email ==='' || password ==='' || role ===''){
+      const loginError = document.getElementById('login-error');
+      loginError.innerText = 'Please fill in all the fields!!!';
+      return;
+    } else {
+      const loginError = document.getElementById('login-error');
+      loginError.innerText = ''; // Clear the error message if all fields are filled
+    }
+
     if (!validateEmail(email)) {
       const emailerror = document.getElementById("email-errorr");
       emailerror.innerText = "Please enter a valid email address";
@@ -26,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
+      
       // Fetch request for login based on role
       const loginResponse = await fetch(`/api/${role}/login`, { // Dynamically set endpoint based on role
         method: 'POST',
@@ -58,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Handle login error
       // Display error message to the user
       const loginErrorElement = document.getElementById('login-error');
-      loginErrorElement.textContent = 'Invalid username or password';
+      loginErrorElement.textContent = 'Invalid email or password';
     }
   });
 });

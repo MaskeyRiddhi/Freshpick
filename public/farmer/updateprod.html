@@ -68,15 +68,12 @@
         <label for="description">Description</label><br>
         <input type="text" id="description" name="description"><br>
     
-        <label for="category">Category</label><br>
-        <input type="text" id="category" name="category"><br>
-    
         <button type="submit" id="updateButton">Update</button>
     </form>
     
 
     <script>
-       document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired');
 
     // Function to extract query parameters from URL
@@ -91,23 +88,17 @@
         return params;
     };
 
-    // Function to fill form fields with product details
-   // Function to fill form fields with product details
 const fillFormWithProductDetails = () => {
-    const queryParams = getQueryParams();
-    console.log('Query Parameters:', queryParams); // Log query parameters to console
-    const productId = queryParams.id || '';
-    console.log('Product ID:', productId); // Log product ID to console
-    document.getElementById('productName').value = queryParams.productName || '';
-    console.log('Product Name:', queryParams.productName); // Log product name to console
-    document.getElementById('price').value = queryParams.price || '';
-    console.log('Price:', queryParams.price); // Log price to console
-    document.getElementById('description').value = queryParams.description || '';
-    console.log('Description:', queryParams.description); // Log description to console
-    document.getElementById('category').value = queryParams.category || '';
-    console.log('Category:', queryParams.category); // Log category to console
-    document.getElementById('productId').innerText = `Selected Product ID: ${productId}`;
-};
+                const queryParams = getQueryParams();
+                const productId = queryParams.id || '';
+                const productName = queryParams.productName || ''; // Extract name from query parameters
+                const price = queryParams.price || '';
+                const description = queryParams.description || '';
+                document.getElementById('productName').value = productName; // Assign name to input element
+                document.getElementById('price').value = price;
+                document.getElementById('description').value = description;
+                document.getElementById('productId').innerText = `Selected User ID: ${productId}`;
+            };
 
 
     // Call the function to fill the form when the page loads
@@ -121,7 +112,11 @@ const fillFormWithProductDetails = () => {
         const productName = document.getElementById('productName').value;
         const price = document.getElementById('price').value;
         const description = document.getElementById('description').value;
-        const category = document.getElementById('category').value;  
+         // Check if any field is empty
+         if (!productName || !price || !description ) {
+                    alert('All fields are required. Please fill in all fields.');
+                    return; // Exit the function if any field is empty
+                }
 
         try {
             // Extract product ID from the query parameters
@@ -132,7 +127,7 @@ const fillFormWithProductDetails = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ productName, price, description, category })
+                body: JSON.stringify({ productName, price, description })
             });
 
             if (!response.ok) {
@@ -153,8 +148,6 @@ const fillFormWithProductDetails = () => {
     const updateForm = document.getElementById('updateForm');
     updateForm.addEventListener('submit', updateProduct);
 });
-
-
     </script>
 </body>
 </html>

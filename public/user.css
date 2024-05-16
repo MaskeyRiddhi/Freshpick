@@ -305,6 +305,99 @@
     transition: var(--transition-2);
   }
   
+  /* Styles for the searched product */
+.searched-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the product horizontally */
+  justify-content: center; /* Center the product vertically */
+  padding: 10px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  margin-bottom: 20px;
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the product horizontally */
+}
+
+.searched-product .product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-items: center; /* Center the details horizontally */
+}
+
+.searched-product .rating-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center; /* Center the buttons horizontally */
+   gap: 10px;
+}
+
+.searched-product .card-title {
+  margin: 10px 0;
+}
+
+.searched-product .price-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.searched-product .btn-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: flex-start;
+}
+
+.searched-product .product-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.searched-product .product-btn:hover {
+  background-color: #e9ecef;
+}
+
+.searched-product .product-btn ion-icon {
+  font-size: 16px;
+}
+
+.searched-product .product-btn .tooltip {
+  display: none;
+}
+
+.searched-product .product-btn:hover .tooltip {
+  display: block;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 100%;
+  margin-bottom: 5px;
+}
+
+.no-match-message {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+  text-align: center; /* Center the message text */
+}
+
   .product-card .product-btn ion-icon { --ionicon-stroke-width: 50px; }
   
   .tooltip {
@@ -592,7 +685,11 @@
     border-radius: var(--radius-4);
   }
   
-  .panel-list { margin-block-end: auto; }
+  .panel-list { 
+    margin-block-end: auto;
+    overflow-y: auto; /* Add a vertical scrollbar when needed */
+    max-height: 1200px; /* Set a max height for the panel list */
+   }
   
   .panel-item:not(:last-child) {
     padding-block-end: 20px;
@@ -673,8 +770,62 @@
     line-height: 1.6;
     color: #666;
   }
-  
-  
+
+  .scroll-btn {
+    display: none; /* Initially hide the scroll button */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--emerald);
+    color: var(--white);
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+
+/* enquiry form */
+.enquiry {
+  padding-top: 20px;
+  padding-bottom: 90px;
+  max-width: 400px;
+  margin: auto;
+  padding:30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 60px;
+}
+
+.enquiry h2{
+  color: #e56123;
+  margin-bottom: 20px;
+}
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+input[type="submit"] {
+  text-align: center;
+  background-color:#e56123;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin-left: 110px;
+  max-width: 100px;
+  margin-top: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background-color:#ff7f3f;
+}
+
   /*-----------------------------------*\
     #FOOTER
   \*-----------------------------------*/
@@ -690,10 +841,16 @@
   .footer-top { padding-block: 60px; }
   
   .footer-top .container {
-    display: grid;
-    gap: 60px;
+    display: flex;
+    /* justify-content: space-between; */
   }
   
+.footer-brand{
+  width: 40vw ;
+  text-align: justify   ;
+ margin-right: 8vw;
+}
+
   .footer .logo {
     font-size: 3.2rem;
     color: var(--white);
@@ -703,6 +860,8 @@
   .footer-text {
     line-height: 2;
     margin-block: 20px 15px;
+    word-spacing: 0.2em; 
+
   }
   
   .social-list {

@@ -8,6 +8,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const email = document.getElementById('email_for_admin_login').value;
     const password = document.getElementById('password_for_admin_login').value;
 
+    // Check if any field is empty
+    if (email === '' || password === '') {
+      const adminloginError = document.getElementById('admin-login-error');
+      adminloginError.innerText = 'Please fill in all the fields!!!';
+      return;
+    } else {
+      const adminloginError = document.getElementById('admin-login-error');
+      adminloginError.innerText = ''; // Clear the error message if all fields are filled
+    }
+
     try {
       const adminloginResponse = await fetch('/api/admin/login', {
         method: 'POST',
@@ -22,13 +32,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         const errorData = await adminloginResponse.json();
         const adminloginErrorElement = document.getElementById('admin-login-error');
-        adminloginErrorElement.textContent = errorData.message; // Display generic error message from the server
-        console.error('Failed to login admin');
+        adminloginErrorElement.textContent = errorData.message || 'Failed to login. Please try again.'; // Display error message from the server or a generic one
+        console.error('Failed to login admin:', errorData.message);
       }
-    } catch (loginError) {
-      console.error('Error logging in user:', loginError.message);
+    } catch (error) {
+      console.error('Error logging in admin:', error.message);
       const adminloginErrorElement = document.getElementById('admin-login-error');
-      adminloginErrorElement.textContent = 'Error during login process';
+      adminloginErrorElement.textContent = 'Error during login process. Please try again later.';
     }
   });
 });
+

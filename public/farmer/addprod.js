@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Populate the farmer dropdown
         farmers.forEach(farmer => {
             const option = document.createElement('option');
+            // option.value = farmer._id; // Assuming each farmer has a unique _id
             option.textContent = farmer.username; // Assuming farmer has a name property
             farmerSelect.appendChild(option);
         });

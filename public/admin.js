@@ -28,7 +28,7 @@ if (toggleButton) {
   };
 }
 
-
+// add the products details in admin dashboard
       document.addEventListener('DOMContentLoaded', function () {
     // Fetch top products data
     fetch('/api/getproducts')
@@ -51,8 +51,9 @@ if (toggleButton) {
         });
 
         // Update total number of products
-        const totalProductsElement = document.querySelector('.cardName:contains("Total Products") + .numbers');
-        totalProductsElement.textContent = data.length;
+        const totalProductsCount = data.length;
+        const totalProductsElement = document.getElementById('totalProductsCount');
+        totalProductsElement.textContent = totalProductsCount;
       })
       .catch(error => {
         console.error('Error fetching top products:', error);
